@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 final class AppPages {
   const AppPages._();
 
-  static const String _initializeRoute = AppRoutes.init;
+  static const String _initializeRoute = AppRoutes.signin;
 
   static final GoRouter routes = GoRouter(
     routes: [
       GoRoute(
-        path: AppRoutes.init,
+        path: AppRoutes.signin,
         builder: (context, state) => const SigninPage(),
       ),
     ],
