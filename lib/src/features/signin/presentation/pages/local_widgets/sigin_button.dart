@@ -24,5 +24,9 @@ class SigninButton extends ConsumerWidget {
     );
   }
 
-  void _onPressed(WidgetRef ref) {}
+  void _onPressed(WidgetRef ref) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+    }
+  }
 }
