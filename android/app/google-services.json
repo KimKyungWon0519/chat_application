@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:13574928418:android:10cac6e9c981b98033b27b",
+        "mobilesdk_app_id": "1:13574928418:android:caa80f93deeb8ae933b27b",
         "android_client_info": {
-          "package_name": "com.example.chat_application"
+          "package_name": "app.kkw.chat_application"
         }
       },
       "oauth_client": [],
