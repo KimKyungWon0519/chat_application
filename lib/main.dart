@@ -1,7 +1,10 @@
 import 'package:chat_application/src/core/routes/app_pages.dart';
+import 'package:chat_application/src/dependency_injection.dart' as Di;
 import 'package:flutter/material.dart';
 
 void main() {
+  Di.initialize();
+
   runApp(const MyApp());
 }
 
