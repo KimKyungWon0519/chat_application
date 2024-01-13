@@ -9,5 +9,9 @@ class InvalidCredentialException extends SigninException {
 }
 
 class UnknownException extends SigninException {
-  const UnknownException() : super('알 수 없는 오류');
+  const UnknownException() : super('알 수 없는 오류가 발생했습니다.');
+}
+
+class NetworkException extends SigninException {
+  const NetworkException() : super('인터넷이 연결되지 않았습니다.');
 }

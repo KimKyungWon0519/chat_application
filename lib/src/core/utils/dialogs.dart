@@ -5,6 +5,8 @@ class Dialogs {
   const Dialogs._();
 
   static Future showLoading(BuildContext context, bool isLoading) {
+    if (!context.mounted) return Future(() => null);
+
     return showDialog(
       context: context,
       builder: (context) => PopScope(
@@ -17,6 +19,8 @@ class Dialogs {
   }
 
   static Future showError(BaseException exception, BuildContext context) {
+    if (!context.mounted) return Future(() => null);
+
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
