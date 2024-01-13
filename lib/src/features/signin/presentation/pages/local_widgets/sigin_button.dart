@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SigninButton extends StatelessWidget {
-  const SigninButton({super.key});
+  final GlobalKey<FormState> formKey;
+
+  const SigninButton({
+    super.key,
+    required this.formKey,
+  });
 
   @override
   Widget build(BuildContext context) {

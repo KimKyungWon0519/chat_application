@@ -47,16 +47,18 @@ class __FormPanelState extends State<_FormPanel> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: const Column(
+      child: Column(
         children: [
-          EmailField(),
-          SizedBox(height: 10),
-          PasswordField(),
-          SizedBox(height: 10),
+          const EmailField(),
+          const SizedBox(height: 10),
+          const PasswordField(),
+          const SizedBox(height: 10),
           SizedBox(
             width: double.infinity,
             height: 50,
-            child: SigninButton(),
+            child: SigninButton(
+              formKey: _formKey,
+            ),
           ),
         ],
       ),
