@@ -1,4 +1,4 @@
-import 'package:chat_application/src/constants/regexp_source.dart';
+import 'package:chat_application/src/core/constants/regexp_source.dart';
 
 class Validator {
   const Validator._();
