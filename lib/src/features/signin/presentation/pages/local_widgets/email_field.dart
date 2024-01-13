@@ -1,10 +1,15 @@
+import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
+import 'package:chat_application/src/features/signin/presentation/presenter/signin_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class EmailField extends StatelessWidget {
+class EmailField extends ConsumerWidget {
   const EmailField({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    SigninViewModel signinViewModel = ref.read(signinProvider);
+
     return TextFormField(
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -13,6 +18,7 @@ class EmailField extends StatelessWidget {
         labelText: 'email',
       ),
       keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => signinViewModel.email = newValue ?? '',
     );
   }
 }
