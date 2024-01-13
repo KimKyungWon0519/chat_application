@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:chat_application/src/core/constants/firebase_auth_error_code.dart';
 import 'package:chat_application/src/core/utils/dialogs.dart';
+import 'package:chat_application/src/core/values/exceptions/base_exception.dart';
 import 'package:chat_application/src/core/values/exceptions/signin_exception.dart';
 import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,20 +53,22 @@ class SigninButton extends ConsumerWidget {
         isLoading = false;
         context.pop();
       });
+
+      print('[LOG] 로그인 성공');
     } on FirebaseAuthException catch (e) {
       if (_isInvalidCredential(e.code)) {
-        if (context.mounted) {
-          Dialogs.showError(const InvalidCredentialException(), context);
-        }
-      } else {
-        if (context.mounted) {
-          Dialogs.showError(const UnknownException(), context);
-        }
+        Dialogs.showError(const InvalidCredentialException(), context);
+        return;
       }
+
+      if (e.code == FirebaseAuthErrorCode.networkRequestFailed) {
+        Dialogs.showError(const NetworkException(), context);
+        return;
+      }
+
+      Dialogs.showError(const UnknownException(), context);
     } catch (e) {
-      if (context.mounted) {
-        Dialogs.showError(const UnknownException(), context);
-      }
+      Dialogs.showError(const UnknownException(), context);
     }
   }
 
