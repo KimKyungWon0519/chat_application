@@ -4,11 +4,16 @@ import 'package:chat_application/src/features/signin/presentation/presenter/sign
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PasswordField extends ConsumerWidget {
+class PasswordField extends ConsumerStatefulWidget {
   const PasswordField({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<PasswordField> createState() => _PasswordFieldState();
+}
+
+class _PasswordFieldState extends ConsumerState<PasswordField> {
+  @override
+  Widget build(BuildContext context) {
     SigninViewModel signinViewModel = ref.read(signinProvider);
 
     return TextFormField(
