@@ -11,4 +11,13 @@ class Validator {
     }
     return null;
   }
+
+  static String? passwordValidator(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'password를 입력해주세요.';
+    } else if (!RegExp(RegExpSource.passwordRegExp).hasMatch(value)) {
+      return '특수문자, 대소문자, 숫자 포함 6자 이상 12자 이내로 입력하세요.';
+    }
+    return null;
+  }
 }

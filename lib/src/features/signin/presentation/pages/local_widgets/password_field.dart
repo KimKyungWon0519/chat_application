@@ -1,3 +1,4 @@
+import 'package:chat_application/src/core/utils/validator.dart';
 import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
 import 'package:chat_application/src/features/signin/presentation/presenter/signin_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class PasswordField extends ConsumerWidget {
       ),
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => signinViewModel.password = newValue ?? '',
+      validator: (value) => Validator.passwordValidator(value),
       obscureText: true,
     );
   }
