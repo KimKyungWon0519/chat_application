@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SigninButton extends StatelessWidget {
+class SigninButton extends ConsumerWidget {
   final GlobalKey<FormState> formKey;
 
   const SigninButton({
@@ -9,7 +10,7 @@ class SigninButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       style: ButtonStyle(
         shape: MaterialStateProperty.all(
@@ -18,8 +19,10 @@ class SigninButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () => _onPressed(ref),
       child: const Text('로그인'),
     );
   }
+
+  void _onPressed(WidgetRef ref) {}
 }
