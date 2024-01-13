@@ -1,11 +1,14 @@
 import 'package:chat_application/src/core/routes/app_pages.dart';
 import 'package:chat_application/src/dependency_injection.dart' as Di;
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   Di.initialize();
 
-  runApp(const MyApp());
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
