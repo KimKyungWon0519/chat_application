@@ -1,3 +1,4 @@
+import 'package:chat_application/features/signin/presentatin/pages/local_widgets/title.dart';
 import 'package:flutter/material.dart';
 
 class SigninPage extends StatelessWidget {
@@ -5,6 +6,14 @@ class SigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: LogoText(),
+          ),
+        ],
+      ),
+    );
   }
 }
