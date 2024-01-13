@@ -19,6 +19,7 @@ class PasswordField extends ConsumerWidget {
       ),
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => signinViewModel.password = newValue ?? '',
+      obscureText: true,
     );
   }
 }
