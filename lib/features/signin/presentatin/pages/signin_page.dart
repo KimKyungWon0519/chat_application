@@ -17,17 +17,47 @@ class SigninPage extends StatelessWidget {
             Expanded(
               child: LogoText(),
             ),
-            EmailField(),
-            SizedBox(height: 10),
-            PasswordField(),
-            SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: SigninButton(),
-            ),
+            _FormPanel(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _FormPanel extends StatefulWidget {
+  const _FormPanel({super.key});
+
+  @override
+  State<_FormPanel> createState() => __FormPanelState();
+}
+
+class __FormPanelState extends State<_FormPanel> {
+  late final GlobalKey<FormState> _formKey;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _formKey = GlobalKey<FormState>();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: const Column(
+        children: [
+          EmailField(),
+          SizedBox(height: 10),
+          PasswordField(),
+          SizedBox(height: 10),
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: SigninButton(),
+          ),
+        ],
       ),
     );
   }
