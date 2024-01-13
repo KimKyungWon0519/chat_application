@@ -1,1 +1,4 @@
-class SigninViewModel {}
+class SigninViewModel {
+  String email = '';
+  String password = '';
+}

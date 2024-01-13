@@ -1,8 +1,9 @@
-import 'package:chat_application/features/signin/presentatin/pages/local_widgets/email_field.dart';
-import 'package:chat_application/features/signin/presentatin/pages/local_widgets/logo_text.dart';
-import 'package:chat_application/features/signin/presentatin/pages/local_widgets/password_field.dart';
-import 'package:chat_application/features/signin/presentatin/pages/local_widgets/sigin_button.dart';
 import 'package:flutter/material.dart';
+
+import 'local_widgets/email_field.dart';
+import 'local_widgets/logo_text.dart';
+import 'local_widgets/password_field.dart';
+import 'local_widgets/sigin_button.dart';
 
 class SigninPage extends StatelessWidget {
   const SigninPage({super.key});
