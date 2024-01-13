@@ -1,4 +1,4 @@
-import 'package:chat_application/core/routes/app_pages.dart';
+import 'package:chat_application/src/core/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 void main() {
