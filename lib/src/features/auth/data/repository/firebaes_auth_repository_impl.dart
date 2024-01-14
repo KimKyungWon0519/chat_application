@@ -1,4 +1,4 @@
-import 'package:chat_application/src/features/signin/domain/repository/firebase_auth_repository.dart';
+import 'package:chat_application/src/features/auth/domain/repository/firebase_auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthRepositoryImpl extends FirebaseAuthRepository {

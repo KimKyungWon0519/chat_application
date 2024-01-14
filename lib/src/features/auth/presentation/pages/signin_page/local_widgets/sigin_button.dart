@@ -4,7 +4,7 @@ import 'package:chat_application/src/core/constants/firebase_auth_error_code.dar
 import 'package:chat_application/src/core/utils/dialogs.dart';
 import 'package:chat_application/src/core/values/exceptions/base_exception.dart';
 import 'package:chat_application/src/core/values/exceptions/signin_exception.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

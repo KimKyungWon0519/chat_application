@@ -1,5 +1,5 @@
 import 'package:chat_application/src/core/routes/app_routes.dart';
-import 'package:chat_application/src/features/signin/presentation/pages/signin_page.dart';
+import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
 import 'package:go_router/go_router.dart';
 
 final class AppPages {

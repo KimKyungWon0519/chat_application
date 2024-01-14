@@ -1,8 +1,8 @@
-import 'package:chat_application/src/features/signin/data/repository/firebaes_auth_repository_impl.dart';
-import 'package:chat_application/src/features/signin/domain/repository/firebase_auth_repository.dart';
-import 'package:chat_application/src/features/signin/domain/usecase/firebae_auth_usecase.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/signin_viewmodel.dart';
+import 'package:chat_application/src/features/auth/data/repository/firebaes_auth_repository_impl.dart';
+import 'package:chat_application/src/features/auth/domain/repository/firebase_auth_repository.dart';
+import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_usecase.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/signin_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void initialize() {
