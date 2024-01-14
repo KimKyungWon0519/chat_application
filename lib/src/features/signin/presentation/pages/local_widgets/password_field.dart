@@ -12,6 +12,8 @@ class PasswordField extends ConsumerStatefulWidget {
 }
 
 class _PasswordFieldState extends ConsumerState<PasswordField> {
+  bool _isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     SigninViewModel signinViewModel = ref.read(signinProvider);
@@ -22,11 +24,19 @@ class _PasswordFieldState extends ConsumerState<PasswordField> {
           borderRadius: BorderRadius.circular(15.0),
         ),
         labelText: 'password',
+        suffixIcon: IconButton(
+          icon: Icon(_isObscureText ? Icons.visibility : Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              _isObscureText = !_isObscureText;
+            });
+          },
+        ),
       ),
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => signinViewModel.password = newValue ?? '',
       validator: (value) => Validator.passwordValidator(value),
-      obscureText: true,
+      obscureText: _isObscureText,
     );
   }
 }
