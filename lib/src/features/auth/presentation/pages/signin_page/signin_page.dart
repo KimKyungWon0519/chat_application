@@ -1,4 +1,7 @@
+import 'package:chat_application/src/core/routes/app_routes.dart';
+import 'package:chat_application/src/features/auth/presentation/pages/signin_page/local_widgets/signup_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'local_widgets/email_field.dart';
 import 'local_widgets/logo_text.dart';
@@ -52,7 +55,7 @@ class __FormPanelState extends State<_FormPanel> {
           const EmailField(),
           const SizedBox(height: 10),
           const PasswordField(),
-          const SizedBox(height: 10),
+          const SignupText(),
           SizedBox(
             width: double.infinity,
             height: 50,
