@@ -2,16 +2,16 @@ import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_u
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SigninViewModel {
-  final FirebaseAuthUseCase _firebaseAuthUseCase;
+  final SigninUseCase _signinUseCase;
 
   String email = '';
   String password = '';
 
   SigninViewModel({
-    required FirebaseAuthUseCase firebaseAuthUseCase,
-  }) : _firebaseAuthUseCase = firebaseAuthUseCase;
+    required SigninUseCase signinUseCase,
+  }) : _signinUseCase = signinUseCase;
 
   Future<UserCredential> signin() {
-    return _firebaseAuthUseCase.signin(email, password);
+    return _signinUseCase.signin(email, password);
   }
 }

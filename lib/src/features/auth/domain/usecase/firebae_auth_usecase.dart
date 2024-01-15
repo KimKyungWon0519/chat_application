@@ -1,10 +1,10 @@
 import 'package:chat_application/src/features/auth/domain/repository/firebase_auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseAuthUseCase {
+class SigninUseCase {
   final FirebaseAuthRepository _firebaseAuthRepository;
 
-  const FirebaseAuthUseCase({
+  const SigninUseCase({
     required FirebaseAuthRepository firebaseAuthRepository,
   }) : _firebaseAuthRepository = firebaseAuthRepository;
 
