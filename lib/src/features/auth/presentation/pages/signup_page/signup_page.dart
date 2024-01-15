@@ -1,4 +1,4 @@
-import 'package:chat_application/src/features/auth/presentation/pages/signup_page/local_widgets/display_field.dart';
+import 'package:chat_application/src/features/auth/presentation/pages/signup_page/local_widgets/name_field.dart';
 import 'package:flutter/material.dart';
 
 import 'local_widgets/email_field.dart';

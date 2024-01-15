@@ -1,4 +1,5 @@
 import 'package:chat_application/src/core/utils/validator.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,7 +16,7 @@ class EmailField extends ConsumerWidget {
         labelText: 'email',
       ),
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) {},
+      onSaved: (newValue) => ref.read(signupProvider).email = newValue ?? '',
       validator: (value) => Validator.emailValidator(value),
     );
   }
