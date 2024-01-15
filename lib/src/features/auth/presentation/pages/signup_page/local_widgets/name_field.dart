@@ -17,7 +17,7 @@ class NameField extends ConsumerWidget {
       ),
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => ref.read(signupProvider).name = newValue ?? '',
-      validator: (value) => Validator.emailValidator(value),
+      validator: (value) => Validator.nameValidator(value),
     );
   }
 }

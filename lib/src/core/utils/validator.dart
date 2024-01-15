@@ -20,4 +20,12 @@ class Validator {
     }
     return null;
   }
+
+  static String? nameValidator(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return '이름을 입력해주세요';
+    }
+
+    return null;
+  }
 }
