@@ -40,3 +40,15 @@ class UserUseCase {
     return _firebaseAuthRepository.changeUserName(user, name);
   }
 }
+
+class AuthUseCase {
+  final FirebaseAuthRepository _firebaseAuthRepository;
+
+  const AuthUseCase({
+    required FirebaseAuthRepository firebaseAuthRepository,
+  }) : _firebaseAuthRepository = firebaseAuthRepository;
+
+  Future<void> signout() {
+    return _firebaseAuthRepository.signout();
+  }
+}

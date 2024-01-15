@@ -27,4 +27,9 @@ class FirebaseAuthRepositoryImpl extends FirebaseAuthRepository {
   Future<void> sendEmailVertification(User user) {
     return user.sendEmailVerification();
   }
+
+  @override
+  Future<void> signout() {
+    return FirebaseAuth.instance.signOut();
+  }
 }
