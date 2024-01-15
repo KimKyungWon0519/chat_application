@@ -3,6 +3,7 @@ import 'package:chat_application/src/features/auth/domain/repository/firebase_au
 import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_usecase.dart';
 import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
 import 'package:chat_application/src/features/auth/presentation/presenter/signin_viewmodel.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/signup_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void initialize() {
@@ -26,6 +27,10 @@ void initialize() {
     (ref) => SigninViewModel(
       firebaseAuthUseCase: firebaseAuthUseCase,
     ),
+  );
+
+  signupProvider = Provider(
+    (ref) => SignupViewModel(firebaseAuthUseCase: firebaseAuthUseCase),
   );
 
   /* End initialize Provider */
