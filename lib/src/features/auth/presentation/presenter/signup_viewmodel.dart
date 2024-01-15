@@ -2,6 +2,7 @@ import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_u
 
 class SignupViewModel {
   final SignUpUseCase _signUpUseCase;
+  final UserUseCase _userUseCase;
 
   String email = '';
   String password = '';
@@ -9,12 +10,15 @@ class SignupViewModel {
 
   SignupViewModel({
     required SignUpUseCase signUpUseCase,
-  }) : _signUpUseCase = signUpUseCase;
+    required UserUseCase userUseCase,
+  })  : _signUpUseCase = signUpUseCase,
+        _userUseCase = userUseCase;
 
   Future<void> signup() {
-    return _signUpUseCase.signup(email, password).then((value) {
+    return _signUpUseCase.signup(email, password).then((value) async {
       if (value.user != null) {
-        _signUpUseCase.sendEmailVerification(value.user!);
+        await _userUseCase.changeName(value.user!, name);
+        await _signUpUseCase.sendEmailVerification(value.user!);
       }
     });
   }

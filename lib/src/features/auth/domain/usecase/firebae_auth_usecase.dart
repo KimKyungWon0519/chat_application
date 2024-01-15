@@ -28,3 +28,15 @@ class SignUpUseCase {
     return _firebaseAuthRepository.sendEmailVertification(user);
   }
 }
+
+class UserUseCase {
+  final FirebaseAuthRepository _firebaseAuthRepository;
+
+  const UserUseCase({
+    required FirebaseAuthRepository firebaseAuthRepository,
+  }) : _firebaseAuthRepository = firebaseAuthRepository;
+
+  Future<void> changeName(User user, String name) {
+    return _firebaseAuthRepository.changeUserName(user, name);
+  }
+}

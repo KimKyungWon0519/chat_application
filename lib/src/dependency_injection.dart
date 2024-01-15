@@ -23,6 +23,10 @@ void initialize() {
     firebaseAuthRepository: firebaseAuthRepository,
   );
 
+  UserUseCase userUseCase = UserUseCase(
+    firebaseAuthRepository: firebaseAuthRepository,
+  );
+
   /* End initialize Usecase */
 
   /* Start initialize Provider */
@@ -36,6 +40,7 @@ void initialize() {
   signupProvider = Provider(
     (ref) => SignupViewModel(
       signUpUseCase: signUpUseCase,
+      userUseCase: userUseCase,
     ),
   );
 
