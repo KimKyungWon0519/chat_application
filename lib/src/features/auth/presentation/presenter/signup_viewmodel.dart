@@ -5,6 +5,7 @@ class SignupViewModel {
 
   String email = '';
   String password = '';
+  String name = '';
 
   SignupViewModel({
     required FirebaseAuthUseCase firebaseAuthUseCase,
