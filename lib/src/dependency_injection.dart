@@ -15,7 +15,11 @@ void initialize() {
 
   /* Start initialize Usecase */
 
-  SigninUseCase firebaseAuthUseCase = SigninUseCase(
+  SigninUseCase signinUseCase = SigninUseCase(
+    firebaseAuthRepository: firebaseAuthRepository,
+  );
+
+  SignUpUseCase signUpUseCase = SignUpUseCase(
     firebaseAuthRepository: firebaseAuthRepository,
   );
 
@@ -25,12 +29,14 @@ void initialize() {
 
   signinProvider = Provider(
     (ref) => SigninViewModel(
-      signinUseCase: firebaseAuthUseCase,
+      signinUseCase: signinUseCase,
     ),
   );
 
   signupProvider = Provider(
-    (ref) => SignupViewModel(firebaseAuthUseCase: firebaseAuthUseCase),
+    (ref) => SignupViewModel(
+      signUpUseCase: signUpUseCase,
+    ),
   );
 
   /* End initialize Provider */
