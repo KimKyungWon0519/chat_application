@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'local_widgets/email_field.dart';
 import 'local_widgets/logo_text.dart';
 import 'local_widgets/password_field.dart';
-import 'local_widgets/sigin_button.dart';
+import 'local_widgets/sigup_button.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -60,7 +60,7 @@ class __FormPanelState extends State<_FormPanel> {
           SizedBox(
             width: double.infinity,
             height: 50,
-            child: SigninButton(
+            child: SignupButton(
               formKey: _formKey,
             ),
           ),

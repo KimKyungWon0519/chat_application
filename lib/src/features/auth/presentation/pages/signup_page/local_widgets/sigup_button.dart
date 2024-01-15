@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SigninButton extends ConsumerWidget {
+class SignupButton extends ConsumerWidget {
   final GlobalKey<FormState> formKey;
 
-  const SigninButton({
+  const SignupButton({
     super.key,
     required this.formKey,
   });
