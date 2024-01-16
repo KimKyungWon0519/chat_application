@@ -1,6 +1,6 @@
 import 'package:chat_application/src/core/utils/validator.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/signin_viewmodel.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/signin_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

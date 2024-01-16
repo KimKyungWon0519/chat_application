@@ -1,5 +1,6 @@
 import 'package:chat_application/src/core/routes/app_routes.dart';
-import 'package:chat_application/src/features/signin/presentation/pages/signin_page.dart';
+import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
+import 'package:chat_application/src/features/auth/presentation/pages/signup_page/signup_page.dart';
 import 'package:go_router/go_router.dart';
 
 final class AppPages {
@@ -12,6 +13,10 @@ final class AppPages {
       GoRoute(
         path: AppRoutes.signin,
         builder: (context, state) => const SigninPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.signup,
+        builder: (context, state) => const SignupPage(),
       ),
     ],
     initialLocation: _initializeRoute,

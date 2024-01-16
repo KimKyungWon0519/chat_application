@@ -2,18 +2,17 @@
 
 import 'package:chat_application/src/core/constants/firebase_auth_error_code.dart';
 import 'package:chat_application/src/core/utils/dialogs.dart';
-import 'package:chat_application/src/core/values/exceptions/base_exception.dart';
-import 'package:chat_application/src/core/values/exceptions/signin_exception.dart';
-import 'package:chat_application/src/features/signin/presentation/presenter/providers.dart';
+import 'package:chat_application/src/core/values/exceptions/signup_exception.dart';
+import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SigninButton extends ConsumerWidget {
+class SignupButton extends ConsumerWidget {
   final GlobalKey<FormState> formKey;
 
-  const SigninButton({
+  const SignupButton({
     super.key,
     required this.formKey,
   });
@@ -29,7 +28,7 @@ class SigninButton extends ConsumerWidget {
         ),
       ),
       onPressed: () => _onPressed(ref, context),
-      child: const Text('로그인'),
+      child: const Text('회원가입'),
     );
   }
 
@@ -49,15 +48,15 @@ class SigninButton extends ConsumerWidget {
     Dialogs.showLoading(context, isLoading);
 
     try {
-      await ref.read(signinProvider).signin().whenComplete(() {
+      await ref.read(signupProvider).signup().whenComplete(() {
         isLoading = false;
         context.pop();
       });
 
-      print('[LOG] 로그인 성공');
+      _showFinishDialog(context);
     } on FirebaseAuthException catch (e) {
-      if (_isInvalidCredential(e.code)) {
-        Dialogs.showError(const InvalidCredentialException(), context);
+      if (e.code == FirebaseAuthErrorCode.emailAlreadyInUse) {
+        Dialogs.showError(const EmailAlreadyInUse(), context);
         return;
       }
 
@@ -72,9 +71,23 @@ class SigninButton extends ConsumerWidget {
     }
   }
 
-  bool _isInvalidCredential(String errorCode) {
-    return errorCode == FirebaseAuthErrorCode.userNotFound ||
-        errorCode == FirebaseAuthErrorCode.wrongPassword ||
-        errorCode == FirebaseAuthErrorCode.invalidCredential;
+  void _showFinishDialog(BuildContext context) {
+    if (!context.mounted) return;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('회원가입 완료'),
+        content: const Text(
+          '메일함에서 인증 메일을 확인해주세요.\n이메일 인증 후 Talk-Track의 모든 기능이 이용 가능합니다.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => context.pop(),
+            child: const Text('확인'),
+          ),
+        ],
+      ),
+    ).then((value) => context.pop());
   }
 }
