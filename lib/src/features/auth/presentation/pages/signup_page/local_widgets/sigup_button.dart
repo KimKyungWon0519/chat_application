@@ -51,10 +51,32 @@ class SignupButton extends ConsumerWidget {
         isLoading = false;
         context.pop();
       });
+
+      _showFinishDialog(context);
     } on FirebaseAuthException catch (e) {
       Dialogs.showError(const UnknownException(), context);
     } catch (e) {
       Dialogs.showError(const UnknownException(), context);
     }
+  }
+
+  void _showFinishDialog(BuildContext context) {
+    if (!context.mounted) return;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('회원가입 완료'),
+        content: const Text(
+          '메일함에서 인증 메일을 확인해주세요.\n이메일 인증 후 Talk-Track의 모든 기능이 이용 가능합니다.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => context.pop(),
+            child: const Text('확인'),
+          ),
+        ],
+      ),
+    ).then((value) => context.pop());
   }
 }
