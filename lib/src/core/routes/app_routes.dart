@@ -1,7 +1,9 @@
 final class AppRoutes {
   const AppRoutes._();
 
-  static const String init = '/';
   static const String signin = '/sigin';
   static const String signup = '/signup';
+  static const String friends = '/friends';
+  static const String chats = '/chats';
+  static const String settings = '/settings';
 }
