@@ -5,4 +5,5 @@ final class FirebaseAuthErrorCode {
   static String wrongPassword = 'wrong-password';
   static String invalidCredential = 'invalid-credential';
   static String networkRequestFailed = 'network-request-failed';
+  static String emailAlreadyInUse = 'email-already-in-use';
 }
