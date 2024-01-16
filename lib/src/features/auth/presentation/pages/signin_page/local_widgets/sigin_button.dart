@@ -53,8 +53,6 @@ class SigninButton extends ConsumerWidget {
         isLoading = false;
         context.pop();
       });
-
-      print('[LOG] 로그인 성공');
     } on FirebaseAuthException catch (e) {
       if (_isInvalidCredential(e.code)) {
         Dialogs.showError(const InvalidCredentialException(), context);
@@ -68,6 +66,12 @@ class SigninButton extends ConsumerWidget {
 
       Dialogs.showError(const UnknownException(), context);
     } catch (e) {
+      if (e is NotVerifiedMail) {
+        Dialogs.showError(e, context);
+
+        return;
+      }
+
       Dialogs.showError(const UnknownException(), context);
     }
   }

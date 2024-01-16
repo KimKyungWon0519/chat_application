@@ -15,3 +15,7 @@ class UnknownException extends SigninException {
 class NetworkException extends SigninException {
   const NetworkException() : super('인터넷이 연결되지 않았습니다.');
 }
+
+class NotVerifiedMail extends SigninException {
+  const NotVerifiedMail() : super('이메일 인증이 되지 않았습니다.');
+}
