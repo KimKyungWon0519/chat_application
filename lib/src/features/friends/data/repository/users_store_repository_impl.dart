@@ -18,14 +18,13 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.users)
         .doc(user.uid)
-        .get()
-        .then(
-          (value) => Domain.UserInfo(
-            uid: user.uid,
+        .snapshots()
+        .map(
+          (event) => Domain.UserInfo(
             name: user.displayName!,
-            onelineInfo: value['oneline_info'],
+            onelineInfo: event.data()!['oneline_info'],
+            uid: user.uid,
           ),
-        )
-        .asStream();
+        );
   }
 }

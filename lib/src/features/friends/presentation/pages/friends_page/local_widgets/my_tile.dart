@@ -13,8 +13,7 @@ class MyTile extends ConsumerWidget {
     return StreamBuilder<UserInfo>(
       stream: ref.read(friendsProvider).getMyUserInfoSnapshot(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done &&
-            snapshot.hasData) {
+        if (snapshot.hasData) {
           UserInfo user = snapshot.data!;
 
           return UserTile(
