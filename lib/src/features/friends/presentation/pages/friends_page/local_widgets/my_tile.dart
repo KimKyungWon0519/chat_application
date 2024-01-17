@@ -1,3 +1,4 @@
+import 'package:chat_application/src/features/friends/domain/model/user_info.dart';
 import 'package:chat_application/src/features/friends/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,10 +10,20 @@ class MyTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return StreamBuilder(
+    return StreamBuilder<UserInfo>(
       stream: ref.read(friendsProvider).getMyUserInfoSnapshot(),
       builder: (context, snapshot) {
-        return const UserTile();
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData) {
+          UserInfo user = snapshot.data!;
+
+          return UserTile(
+            name: user.name,
+            onelineInfo: user.onelineInfo,
+          );
+        }
+
+        return const CircularProgressIndicator();
       },
     );
   }

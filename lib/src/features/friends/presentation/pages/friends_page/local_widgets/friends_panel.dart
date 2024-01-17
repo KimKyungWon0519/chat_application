@@ -9,7 +9,11 @@ class FriendsPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (int i = 0; i < 100; i++) const UserTile(),
+        for (int i = 0; i < 100; i++)
+          const UserTile(
+            name: '',
+            onelineInfo: '',
+          ),
       ],
     );
   }
