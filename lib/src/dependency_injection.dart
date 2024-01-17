@@ -4,12 +4,18 @@ import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_u
 import 'package:chat_application/src/features/auth/presentation/presenter/providers.dart';
 import 'package:chat_application/src/features/auth/presentation/presenter/signin_viewmodel.dart';
 import 'package:chat_application/src/features/auth/presentation/presenter/signup_viewmodel.dart';
+import 'package:chat_application/src/features/friends/data/repository/users_store_repository_impl.dart';
+import 'package:chat_application/src/features/friends/domain/repository/users_store_repository.dart';
+import 'package:chat_application/src/features/friends/domain/usecase/users_store_usecase.dart';
+import 'package:chat_application/src/features/friends/presentation/presenter/friends_viewmodel.dart';
+import 'package:chat_application/src/features/friends/presentation/presenter/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void initialize() {
   /* Start initialize Repository */
 
   FirebaseAuthRepository firebaseAuthRepository = FirebaseAuthRepositoryImpl();
+  UsersStoreRepository usersStoreRepository = UsersStoreRepositoryImpl();
 
   /* End initialize Repository */
 
@@ -31,6 +37,10 @@ void initialize() {
     firebaseAuthRepository: firebaseAuthRepository,
   );
 
+  UsersStoreUseCsae usersStoreUseCsae = UsersStoreUseCsae(
+    usersStoreRepository: usersStoreRepository,
+  );
+
   /* End initialize Usecase */
 
   /* Start initialize Provider */
@@ -46,6 +56,12 @@ void initialize() {
       signUpUseCase: signUpUseCase,
       userUseCase: userUseCase,
       authUseCase: authUseCase,
+    ),
+  );
+
+  friendsProvider = Provider(
+    (ref) => FriendsViewModel(
+      usersStoreUseCsae: usersStoreUseCsae,
     ),
   );
 
