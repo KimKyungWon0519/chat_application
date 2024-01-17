@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'local_widgets/friends_panel.dart';
-import 'local_widgets/user_tile.dart';
+import 'local_widgets/my_tile.dart';
 
 class FriendsPage extends StatelessWidget {
   const FriendsPage({super.key});
@@ -17,7 +17,7 @@ class FriendsPage extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           child: Column(
             children: [
-              UserTile(),
+              MyTile(),
               Divider(),
               FriendsPanel(),
             ],
