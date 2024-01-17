@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'local_widgets/friends_panel.dart';
+import 'local_widgets/user_tile.dart';
+
 class FriendsPage extends StatelessWidget {
   const FriendsPage({super.key});
 
@@ -8,6 +11,18 @@ class FriendsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('친구'),
+      ),
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              UserTile(),
+              Divider(),
+              FriendsPanel(),
+            ],
+          ),
+        ),
       ),
     );
   }
