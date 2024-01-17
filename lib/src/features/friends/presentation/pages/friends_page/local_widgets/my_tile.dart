@@ -10,7 +10,7 @@ class MyTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return StreamBuilder(
-      stream: ref.read(friendsProvider).getUsersSnapshot(),
+      stream: ref.read(friendsProvider).getMyUserInfoSnapshot(),
       builder: (context, snapshot) {
         return const UserTile();
       },

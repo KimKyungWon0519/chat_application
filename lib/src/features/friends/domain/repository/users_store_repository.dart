@@ -2,4 +2,5 @@ import 'package:chat_application/src/features/friends/domain/model/user_info.dar
 
 abstract class UsersStoreRepository {
   Stream<List<UserInfo>> getUsersSnapshot();
+  Stream<UserInfo> getMyUserInfoSnapshot();
 }

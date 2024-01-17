@@ -8,7 +8,7 @@ class FriendsViewModel {
     required UsersStoreUseCsae usersStoreUseCsae,
   }) : _usersStoreUseCsae = usersStoreUseCsae;
 
-  Stream<List<UserInfo>> getUsersSnapshot() {
-    return _usersStoreUseCsae.getUsersSnapshot();
+  Stream<UserInfo> getMyUserInfoSnapshot() {
+    return _usersStoreUseCsae.getMyUserInfoSnapshot();
   }
 }

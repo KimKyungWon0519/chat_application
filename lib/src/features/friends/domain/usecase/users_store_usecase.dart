@@ -8,7 +8,7 @@ class UsersStoreUseCsae {
     required UsersStoreRepository usersStoreRepository,
   }) : _usersStoreRepository = usersStoreRepository;
 
-  Stream<List<UserInfo>> getUsersSnapshot() {
-    return _usersStoreRepository.getUsersSnapshot();
+  Stream<UserInfo> getMyUserInfoSnapshot() {
+    return _usersStoreRepository.getMyUserInfoSnapshot();
   }
 }
