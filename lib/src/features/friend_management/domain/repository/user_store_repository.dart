@@ -1,1 +1,3 @@
-abstract class UsersStoreRepository {}
+abstract class UsersStoreRepository {
+  Future<String> getMyCode();
+}
