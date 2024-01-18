@@ -6,4 +6,8 @@ class CreateUserInfoUseCase {
   CreateUserInfoUseCase({
     required UsersStoreRepository usersStoreRepository,
   }) : _usersStoreRepository = usersStoreRepository;
+
+  Future<void> createUserInfo(String uid, String name) {
+    return _usersStoreRepository.createUserInfo(uid, name);
+  }
 }
