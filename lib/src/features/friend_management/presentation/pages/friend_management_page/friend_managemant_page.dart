@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'local_widgets/add_friend_tile.dart';
+
 class FriendManagementPage extends StatelessWidget {
   const FriendManagementPage({super.key});
 
@@ -8,6 +10,11 @@ class FriendManagementPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('친구 관리'),
+      ),
+      body: const Column(
+        children: [
+          AddFriendTile(),
+        ],
       ),
     );
   }
