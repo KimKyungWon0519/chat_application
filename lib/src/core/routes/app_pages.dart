@@ -2,6 +2,7 @@ import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signup_page/signup_page.dart';
 import 'package:chat_application/src/features/chats/presentation/pages/chats_page/chats_page.dart';
+import 'package:chat_application/src/features/friend_management/presentation/pages/add_friend_page/add_friend_page.dart';
 import 'package:chat_application/src/features/friend_management/presentation/pages/friend_management_page/friend_managemant_page.dart';
 import 'package:chat_application/src/features/friends/presentation/pages/friends_page/friends_page.dart';
 import 'package:chat_application/src/features/navigator/presentation/pages/navigator_page/navigator_page.dart';
@@ -47,14 +48,21 @@ final class AppPages {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                  path: AppRoutes.settings,
-                  builder: (context, state) => const SettingsPage(),
-                  routes: [
-                    GoRoute(
-                      path: AppRoutes.friendManagement,
-                      builder: (context, state) => const FriendManagementPage(),
-                    ),
-                  ]),
+                path: AppRoutes.settings,
+                builder: (context, state) => const SettingsPage(),
+                routes: [
+                  GoRoute(
+                    path: AppRoutes.friendManagement,
+                    builder: (context, state) => const FriendManagementPage(),
+                    routes: [
+                      GoRoute(
+                        path: AppRoutes.addFriend,
+                        builder: (context, state) => const AddFriendPage(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ],
