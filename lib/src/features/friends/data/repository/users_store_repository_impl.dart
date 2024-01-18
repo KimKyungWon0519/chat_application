@@ -21,7 +21,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .snapshots()
         .map(
           (event) => Domain.UserInfo(
-            name: user.displayName!,
+            name: event.data()!['name'],
             onelineInfo: event.data()!['oneline_info'],
             uid: user.uid,
           ),
