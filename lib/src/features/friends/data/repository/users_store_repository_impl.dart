@@ -1,4 +1,5 @@
 import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/features/friends/data/mapper/user_info_mapper.dart';
 import 'package:chat_application/src/features/friends/domain/model/user_info.dart'
     as Domain;
 import 'package:chat_application/src/features/friends/domain/repository/users_store_repository.dart';
@@ -19,12 +20,6 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .collection(CloudFirestorePath.users)
         .doc(uid)
         .snapshots()
-        .map((event) {
-      return Domain.UserInfo(
-        name: event.data()!['name'] ?? '',
-        onelineInfo: event.data()!['oneline_info'] ?? '',
-        uid: uid,
-      );
-    });
+        .map((event) => event.data()!.toUserInfo(uid));
   }
 }
