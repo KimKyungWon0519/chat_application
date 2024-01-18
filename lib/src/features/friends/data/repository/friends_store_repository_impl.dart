@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FriendsStoreRepositoryImpl extends FriendsStoreRepository {
   @override
-  Stream<List> getFriendssSnapshot() {
+  Stream<List> getFriendsSnapshot() {
     User user = FirebaseAuth.instance.currentUser!;
 
     return FirebaseFirestore.instance
