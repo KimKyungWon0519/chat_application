@@ -15,4 +15,8 @@ class FriendsViewModel {
   Stream<List> getFrirendsSnaphot() {
     return _usersStoreUseCsae.getFriendsSnapshot();
   }
+
+  Stream<UserInfo> getUserSnapshot(String uid) {
+    return _usersStoreUseCsae.getUserSnapshot(uid);
+  }
 }

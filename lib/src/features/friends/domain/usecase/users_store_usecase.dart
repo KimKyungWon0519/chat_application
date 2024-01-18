@@ -15,4 +15,8 @@ class UsersStoreUseCsae {
   Stream<List> getFriendsSnapshot() {
     return _usersStoreRepository.getFriendssSnapshot();
   }
+
+  Stream<UserInfo> getUserSnapshot(String uid) {
+    return _usersStoreRepository.getUserInfoSnapshot(uid);
+  }
 }

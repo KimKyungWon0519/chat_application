@@ -21,10 +21,11 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   Stream<Domain.UserInfo> getMyUserInfoSnapshot() {
     User user = FirebaseAuth.instance.currentUser!;
 
-    return _getUserInfoSnapshot(user.uid);
+    return getUserInfoSnapshot(user.uid);
   }
 
-  Stream<Domain.UserInfo> _getUserInfoSnapshot(String uid) {
+  @override
+  Stream<Domain.UserInfo> getUserInfoSnapshot(String uid) {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.users)
         .doc(uid)
