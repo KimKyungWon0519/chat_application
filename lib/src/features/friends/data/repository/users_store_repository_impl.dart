@@ -19,12 +19,12 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .collection(CloudFirestorePath.users)
         .doc(uid)
         .snapshots()
-        .map(
-          (event) => Domain.UserInfo(
-            name: event.data()!['name'],
-            onelineInfo: event.data()!['oneline_info'],
-            uid: uid,
-          ),
-        );
+        .map((event) {
+      return Domain.UserInfo(
+        name: event.data()!['name'] ?? '',
+        onelineInfo: event.data()!['oneline_info'] ?? '',
+        uid: uid,
+      );
+    });
   }
 }
