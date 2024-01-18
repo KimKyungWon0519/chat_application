@@ -6,4 +6,8 @@ class AddFriendViewModel {
   AddFriendViewModel({
     required UsersStoreUseCase usersStoreUseCase,
   }) : _usersStoreUseCase = usersStoreUseCase;
+
+  Future<String> getMyCode() {
+    return _usersStoreUseCase.getMyCode();
+  }
 }
