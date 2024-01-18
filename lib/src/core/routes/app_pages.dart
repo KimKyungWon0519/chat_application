@@ -50,25 +50,23 @@ final class AppPages {
               GoRoute(
                 path: AppRoutes.settings,
                 builder: (context, state) => const SettingsPage(),
-                routes: [
-                  GoRoute(
-                    path: AppRoutes.friendManagement,
-                    builder: (context, state) => const FriendManagementPage(),
-                    routes: [
-                      GoRoute(
-                        path: AppRoutes.addFriend,
-                        builder: (context, state) => const AddFriendPage(),
-                      ),
-                    ],
-                  ),
-                ],
               ),
             ],
           ),
         ],
         builder: (context, state, navigationShell) =>
             NavigatorPage(navigationShell),
-      )
+      ),
+      GoRoute(
+        path: AppRoutes.settings + AppRoutes.friendManagement,
+        builder: (context, state) => const FriendManagementPage(),
+        routes: [
+          GoRoute(
+            path: AppRoutes.addFriend,
+            builder: (context, state) => const AddFriendPage(),
+          ),
+        ],
+      ),
     ],
     redirect: (context, state) {
       if ((state.fullPath ?? '') == _initializeRoute && !_userNotifiy.isLogin) {

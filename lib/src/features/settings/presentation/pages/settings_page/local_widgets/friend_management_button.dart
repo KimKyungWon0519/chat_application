@@ -11,7 +11,7 @@ class FriendManagementTile extends StatelessWidget {
       title: const Text('친구 관리'),
       trailing: const Icon(Icons.chevron_right_rounded),
       onTap: () =>
-          context.push('${AppRoutes.settings}/${AppRoutes.friendManagement}'),
+          context.push(AppRoutes.settings + AppRoutes.friendManagement),
     );
   }
 }
