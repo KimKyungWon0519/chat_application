@@ -6,4 +6,5 @@ final class AppRoutes {
   static const String friends = '/friends';
   static const String chats = '/chats';
   static const String settings = '/settings';
+  static const String friendManagement = 'friend_management';
 }
