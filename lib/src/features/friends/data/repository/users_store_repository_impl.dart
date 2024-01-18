@@ -7,17 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class UsersStoreRepositoryImpl extends UsersStoreRepository {
   @override
-  Stream<List> getFriendssSnapshot() {
-    User user = FirebaseAuth.instance.currentUser!;
-
-    return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.friends)
-        .doc(user.uid)
-        .snapshots()
-        .map((event) => event.data()!['uids']);
-  }
-
-  @override
   Stream<Domain.UserInfo> getMyUserInfoSnapshot() {
     User user = FirebaseAuth.instance.currentUser!;
 

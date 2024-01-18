@@ -1,1 +1,3 @@
-abstract class FriendsStoreRepository {}
+abstract class FriendsStoreRepository {
+  Stream<List> getFriendssSnapshot();
+}
