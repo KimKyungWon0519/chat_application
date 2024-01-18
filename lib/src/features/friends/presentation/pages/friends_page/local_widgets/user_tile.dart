@@ -1,20 +1,19 @@
+import 'package:chat_application/src/features/friends/domain/model/user_info.dart';
 import 'package:flutter/material.dart';
 
 class UserTile extends StatelessWidget {
-  final String name;
-  final String onelineInfo;
+  final UserInfo userInfo;
 
   const UserTile({
     super.key,
-    required this.name,
-    required this.onelineInfo,
+    required this.userInfo,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(name),
-      subtitle: Text(onelineInfo),
+      title: Text(userInfo.name),
+      subtitle: Text(userInfo.onelineInfo),
       leading: const Icon(Icons.account_circle),
     );
   }
