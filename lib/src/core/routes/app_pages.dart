@@ -57,11 +57,11 @@ final class AppPages {
       )
     ],
     redirect: (context, state) {
-      if (!_userNotifiy.isLogin) {
+      if ((state.fullPath ?? '') == _initializeRoute && !_userNotifiy.isLogin) {
         return AppRoutes.signin;
       }
 
-      return state.fullPath;
+      return null;
     },
     refreshListenable: _userNotifiy,
     initialLocation: _initializeRoute,
@@ -73,8 +73,12 @@ class _UserNotifiy extends ChangeNotifier {
 
   _UserNotifiy() {
     FirebaseAuth.instance.userChanges().listen((event) {
-      isLogin = event != null;
-      notifyListeners();
+      bool data = event != null;
+
+      if (isLogin != data) {
+        isLogin = data;
+        notifyListeners();
+      }
     });
   }
 }

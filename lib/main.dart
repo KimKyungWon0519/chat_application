@@ -1,6 +1,7 @@
 import 'package:chat_application/firebase_options.dart';
 import 'package:chat_application/src/core/routes/app_pages.dart';
 import 'package:chat_application/src/dependency_injection.dart' as Di;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseAuth.instanceFor(app: app);
+  FirebaseFirestore.instanceFor(app: app);
 
   Di.initialize();
 

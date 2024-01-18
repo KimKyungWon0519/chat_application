@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:chat_application/src/core/constants/firebase_auth_error_code.dart';
+import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:chat_application/src/core/utils/dialogs.dart';
 import 'package:chat_application/src/core/values/exceptions/base_exception.dart';
 import 'package:chat_application/src/core/values/exceptions/signin_exception.dart';
@@ -53,6 +54,8 @@ class SigninButton extends ConsumerWidget {
         isLoading = false;
         context.pop();
       });
+
+      context.go(AppRoutes.friends);
     } on FirebaseAuthException catch (e) {
       if (_isInvalidCredential(e.code)) {
         Dialogs.showError(const InvalidCredentialException(), context);
