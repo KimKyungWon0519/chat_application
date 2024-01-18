@@ -14,17 +14,19 @@ import 'package:go_router/go_router.dart';
 final class AppPages {
   const AppPages._();
 
-  static const String _initializeRoute = AppRoutes.friends;
+  static final String _initializeRoute = MainRoutes.friends.path;
   static final _UserNotifiy _userNotifiy = _UserNotifiy();
 
   static final GoRouter routes = GoRouter(
     routes: [
       GoRoute(
-        path: AppRoutes.signin,
+        path: AuthRoutes.signin.path,
+        name: AuthRoutes.signin.name,
         builder: (context, state) => const SigninPage(),
       ),
       GoRoute(
-        path: AppRoutes.signup,
+        path: AuthRoutes.signup.path,
+        name: AuthRoutes.signup.name,
         builder: (context, state) => const SignupPage(),
       ),
       StatefulShellRoute.indexedStack(
@@ -32,7 +34,8 @@ final class AppPages {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutes.friends,
+                path: MainRoutes.friends.path,
+                name: MainRoutes.friends.name,
                 builder: (context, state) => const FriendsPage(),
               ),
             ],
@@ -40,7 +43,8 @@ final class AppPages {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutes.chats,
+                path: MainRoutes.chats.path,
+                name: MainRoutes.chats.name,
                 builder: (context, state) => const ChatsPage(),
               ),
             ],
@@ -48,7 +52,8 @@ final class AppPages {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutes.settings,
+                path: MainRoutes.settings.path,
+                name: MainRoutes.settings.name,
                 builder: (context, state) => const SettingsPage(),
               ),
             ],
@@ -58,11 +63,13 @@ final class AppPages {
             NavigatorPage(navigationShell),
       ),
       GoRoute(
-        path: AppRoutes.settings + AppRoutes.friendManagement,
+        path: FriendManagementRoutes.friendManagement.path,
+        name: FriendManagementRoutes.friendManagement.name,
         builder: (context, state) => const FriendManagementPage(),
         routes: [
           GoRoute(
-            path: AppRoutes.addFriend,
+            path: FriendManagementRoutes.addFriend.path,
+            name: FriendManagementRoutes.addFriend.name,
             builder: (context, state) => const AddFriendPage(),
           ),
         ],
@@ -70,7 +77,7 @@ final class AppPages {
     ],
     redirect: (context, state) {
       if ((state.fullPath ?? '') == _initializeRoute && !_userNotifiy.isLogin) {
-        return AppRoutes.signin;
+        return AuthRoutes.signin.path;
       }
 
       return null;

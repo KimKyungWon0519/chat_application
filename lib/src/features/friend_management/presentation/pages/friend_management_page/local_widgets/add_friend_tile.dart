@@ -10,8 +10,7 @@ class AddFriendTile extends StatelessWidget {
     return ListTile(
       title: const Text('친구 추가'),
       trailing: const Icon(Icons.chevron_right),
-      onTap: () => context.push(
-          '${AppRoutes.settings}${AppRoutes.friendManagement}/${AppRoutes.addFriend}'),
+      onTap: () => context.pushNamed(FriendManagementRoutes.addFriend.name),
     );
   }
 }

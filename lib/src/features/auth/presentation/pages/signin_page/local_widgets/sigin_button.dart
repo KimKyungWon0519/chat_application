@@ -55,7 +55,7 @@ class SigninButton extends ConsumerWidget {
         context.pop();
       });
 
-      context.go(AppRoutes.friends);
+      context.goNamed(MainRoutes.friends.name);
     } on FirebaseAuthException catch (e) {
       if (_isInvalidCredential(e.code)) {
         Dialogs.showError(const InvalidCredentialException(), context);

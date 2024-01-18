@@ -12,7 +12,7 @@ class SignupText extends StatelessWidget {
       children: [
         const Text('계정이 없으신가요?'),
         TextButton(
-          onPressed: () => context.push(AppRoutes.signup),
+          onPressed: () => context.pushNamed(AuthRoutes.signup.name),
           child: const Text(
             '회원가입',
           ),
