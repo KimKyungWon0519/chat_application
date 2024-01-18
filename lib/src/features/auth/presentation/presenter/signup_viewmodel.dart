@@ -26,6 +26,7 @@ class SignupViewModel {
       if (value.user != null) {
         await _userUseCase.changeName(value.user!, name);
         await _signUpUseCase.sendEmailVerification(value.user!);
+        await _createUserInfoUseCase.createUserInfo(value.user!.uid, name);
         _authUseCase.signout();
       }
     });
