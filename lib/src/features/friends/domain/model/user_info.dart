@@ -8,4 +8,9 @@ class UserInfo {
     required this.name,
     required this.onelineInfo,
   });
+
+  const UserInfo.empty()
+      : uid = '',
+        name = '',
+        onelineInfo = '';
 }
