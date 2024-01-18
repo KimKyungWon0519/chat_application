@@ -6,4 +6,8 @@ class FriendsStoreUseCase {
   FriendsStoreUseCase({
     required FriendsStoreRepository friendsStoreRepository,
   }) : _friendsStoreRepository = friendsStoreRepository;
+
+  Stream<List> getFriendsSnapshot() {
+    return _friendsStoreRepository.getFriendsSnapshot();
+  }
 }
