@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'local_widgets/friends_panel.dart';
+import 'local_widgets/friends_listview.dart';
 import 'local_widgets/my_tile.dart';
 
 class FriendsPage extends StatelessWidget {
@@ -19,7 +19,7 @@ class FriendsPage extends StatelessWidget {
             children: [
               MyTile(),
               Divider(),
-              FriendsPanel(),
+              FriendsListView(),
             ],
           ),
         ),
