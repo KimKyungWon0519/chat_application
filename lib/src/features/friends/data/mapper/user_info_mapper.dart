@@ -6,6 +6,7 @@ extension MapExtenstion on Map {
       uid: uid,
       name: this['name'] ?? '',
       onelineInfo: this['oneline_info'] ?? '',
+      code: this['code'] ?? '',
     );
   }
 }
