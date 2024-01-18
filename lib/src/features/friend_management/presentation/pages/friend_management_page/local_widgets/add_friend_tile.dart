@@ -1,4 +1,6 @@
+import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AddFriendTile extends StatelessWidget {
   const AddFriendTile({super.key});
@@ -7,10 +9,9 @@ class AddFriendTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: const Text('친구 추가'),
-      trailing: IconButton(
-        icon: const Icon(Icons.chevron_right),
-        onPressed: () {},
-      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => context.push(
+          '${AppRoutes.settings}/${AppRoutes.friendManagement}/${AppRoutes.addFriend}'),
     );
   }
 }
