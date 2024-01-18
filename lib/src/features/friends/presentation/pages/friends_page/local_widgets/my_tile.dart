@@ -13,16 +13,11 @@ class MyTile extends ConsumerWidget {
     return StreamBuilder<UserInfo>(
       stream: ref.read(friendsProvider).getMyUserInfoSnapshot(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          UserInfo user = snapshot.data!;
+        UserInfo user = snapshot.data ?? const UserInfo.empty();
 
-          return UserTile(
-            name: user.name,
-            onelineInfo: user.onelineInfo,
-          );
-        }
-
-        return const CircularProgressIndicator();
+        return UserTile(
+          userInfo: user,
+        );
       },
     );
   }
