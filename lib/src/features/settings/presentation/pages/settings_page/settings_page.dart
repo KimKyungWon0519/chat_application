@@ -9,6 +9,9 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('설정'),
       ),
+      body: const Column(
+        children: [],
+      ),
     );
   }
 }
