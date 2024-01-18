@@ -15,15 +15,19 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   Stream<Domain.UserInfo> getMyUserInfoSnapshot() {
     User user = FirebaseAuth.instance.currentUser!;
 
+    return _getUserInfoSnapshot(user.uid);
+  }
+
+  Stream<Domain.UserInfo> _getUserInfoSnapshot(String uid) {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.users)
-        .doc(user.uid)
+        .doc(uid)
         .snapshots()
         .map(
           (event) => Domain.UserInfo(
             name: event.data()!['name'],
             onelineInfo: event.data()!['oneline_info'],
-            uid: user.uid,
+            uid: uid,
           ),
         );
   }
