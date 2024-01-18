@@ -6,4 +6,8 @@ class UsersStoreUseCase {
   const UsersStoreUseCase({
     required UsersStoreRepository usersStoreRepository,
   }) : _usersStoreRepository = usersStoreRepository;
+
+  Future<String> getMyCode() {
+    return _usersStoreRepository.getMyCode();
+  }
 }
