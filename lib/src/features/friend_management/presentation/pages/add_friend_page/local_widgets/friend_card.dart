@@ -18,7 +18,9 @@ class FriendCard extends ConsumerWidget {
         title: Text(user.name),
         trailing: TextButton(
           child: const Text('추가'),
-          onPressed: () {},
+          onPressed: () {
+            ref.read(addFriendProvider.notifier).addFriend(user.uid);
+          },
         ),
       ),
     );
