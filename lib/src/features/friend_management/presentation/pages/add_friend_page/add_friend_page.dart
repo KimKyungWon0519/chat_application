@@ -1,3 +1,4 @@
+import 'package:chat_application/src/features/friend_management/presentation/pages/add_friend_page/local_widgets/friend_card.dart';
 import 'package:chat_application/src/features/friend_management/presentation/pages/add_friend_page/local_widgets/search_field.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,8 @@ class AddFriendPage extends StatelessWidget {
               child: Divider(),
             ),
             SearchField(),
+            SizedBox(height: 10),
+            FriendCard(),
           ],
         ),
       ),
