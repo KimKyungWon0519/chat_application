@@ -12,7 +12,7 @@ class UsersStoreUseCase {
     return _usersStoreRepository.getMyCode();
   }
 
-  Future<UserInfo> getUserWithCode(String code) {
+  Future<UserInfo?> getUserWithCode(String code) {
     return _usersStoreRepository.getUserWithCode(code);
   }
 }

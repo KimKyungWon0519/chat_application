@@ -1,9 +1,9 @@
 import 'package:chat_application/src/features/friend_management/domain/model/user_info.dart';
 
 extension MapExtension on Map {
-  UserInfo toUserInfo() {
+  UserInfo toUserInfo(String uid) {
     return UserInfo(
-      uid: this['uid'] ?? '',
+      uid: uid,
       name: this['name'] ?? '',
     );
   }

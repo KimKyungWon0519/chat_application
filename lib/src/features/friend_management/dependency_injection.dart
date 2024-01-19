@@ -23,7 +23,7 @@ void initializeDependencyInjection() {
 
   /* Start Initialize ViewModel */
 
-  addFriendProvider = StateNotifierProvider<AddFriendViewModel, UserInfo>(
+  addFriendProvider = StateNotifierProvider<AddFriendViewModel, UserInfo?>(
     (ref) => AddFriendViewModel(usersStoreUseCase: usersStoreUseCase),
   );
 

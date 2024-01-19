@@ -21,15 +21,15 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   }
 
   @override
-  Future<Domain.UserInfo> getUserWithCode(String code) {
+  Future<Domain.UserInfo?> getUserWithCode(String code) {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.users)
         .where('code', isEqualTo: code)
         .get()
         .then((value) {
-      if (value.docs.isEmpty) return const Domain.UserInfo.empty();
+      if (value.docs.isEmpty) return null;
 
-      return value.docs.first.data().toUserInfo();
+      return value.docs.first.data().toUserInfo(value.docs.first.id);
     });
   }
 }

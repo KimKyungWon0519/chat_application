@@ -2,5 +2,5 @@ import 'package:chat_application/src/features/friend_management/domain/model/use
 
 abstract class UsersStoreRepository {
   Future<String> getMyCode();
-  Future<UserInfo> getUserWithCode(String code);
+  Future<UserInfo?> getUserWithCode(String code);
 }

@@ -2,7 +2,7 @@ import 'package:chat_application/src/features/friend_management/domain/usecase/u
 import 'package:chat_application/src/features/friend_management/domain/model/user_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddFriendViewModel extends StateNotifier<UserInfo> {
+class AddFriendViewModel extends StateNotifier<UserInfo?> {
   final UsersStoreUseCase _usersStoreUseCase;
 
   AddFriendViewModel({
@@ -14,7 +14,7 @@ class AddFriendViewModel extends StateNotifier<UserInfo> {
     return _usersStoreUseCase.getMyCode();
   }
 
-  Future<UserInfo> getUserWithCode(String code) {
-    return _usersStoreUseCase.getUserWithCode(code);
+  void findUserWithCode(String code) {
+    _usersStoreUseCase.getUserWithCode(code).then((value) => state = value);
   }
 }

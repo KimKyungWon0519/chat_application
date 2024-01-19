@@ -1,4 +1,6 @@
+import 'package:chat_application/src/features/friend_management/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -28,10 +30,14 @@ class _SearchFieldState extends State<SearchField> {
             maxLength: 6,
           ),
         ),
-        TextButton(
-          onPressed: () {},
-          child: const Text('검색'),
-        ),
+        Consumer(
+          builder: (context, ref, child) => TextButton(
+            onPressed: () => ref
+                .read(addFriendProvider.notifier)
+                .findUserWithCode(_controller.text),
+            child: const Text('검색'),
+          ),
+        )
       ],
     );
   }
