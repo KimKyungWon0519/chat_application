@@ -15,6 +15,7 @@ class _SearchFieldState extends State<SearchField> {
         const Expanded(
           child: TextField(
             decoration: InputDecoration(hintText: '친구 코드를 입력해주세요.'),
+            maxLength: 6,
           ),
         ),
         TextButton(

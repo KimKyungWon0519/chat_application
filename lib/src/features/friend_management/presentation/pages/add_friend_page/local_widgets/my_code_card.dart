@@ -23,7 +23,7 @@ class _CodeText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
-      future: ref.read(addFriendProvider).getMyCode(),
+      future: ref.read(addFriendProvider.notifier).getMyCode(),
       builder: (context, snapshot) {
         return Text(
           snapshot.data ?? '',
