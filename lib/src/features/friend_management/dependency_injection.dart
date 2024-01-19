@@ -3,6 +3,7 @@ import 'package:chat_application/src/features/friend_management/domain/repositor
 import 'package:chat_application/src/features/friend_management/domain/usecase/users_store_usecase.dart';
 import 'package:chat_application/src/features/friend_management/presentation/presenter/add_friend_viewmodel.dart';
 import 'package:chat_application/src/features/friend_management/presentation/presenter/providers.dart';
+import 'package:chat_application/src/features/friend_management/domain/model/user_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void initializeDependencyInjection() {
@@ -22,7 +23,7 @@ void initializeDependencyInjection() {
 
   /* Start Initialize ViewModel */
 
-  addFriendProvider = Provider(
+  addFriendProvider = StateNotifierProvider<AddFriendViewModel, UserInfo>(
     (ref) => AddFriendViewModel(usersStoreUseCase: usersStoreUseCase),
   );
 
