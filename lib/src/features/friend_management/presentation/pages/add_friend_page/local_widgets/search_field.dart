@@ -8,13 +8,23 @@ class SearchField extends StatefulWidget {
 }
 
 class _SearchFieldState extends State<SearchField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: TextField(
-            decoration: InputDecoration(hintText: '친구 코드를 입력해주세요.'),
+            controller: _controller,
+            decoration: const InputDecoration(hintText: '친구 코드를 입력해주세요.'),
             maxLength: 6,
           ),
         ),
