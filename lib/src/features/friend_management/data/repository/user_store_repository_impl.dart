@@ -29,6 +29,10 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .then((value) {
       if (value.docs.isEmpty) return null;
 
+      if (value.docs.first.id == FirebaseAuth.instance.currentUser!.uid) {
+        return null;
+      }
+
       return value.docs.first.data().toUserInfo(value.docs.first.id);
     });
   }
