@@ -32,9 +32,13 @@ class _SearchFieldState extends State<SearchField> {
         ),
         Consumer(
           builder: (context, ref, child) => TextButton(
-            onPressed: () => ref
-                .read(addFriendProvider.notifier)
-                .findUserWithCode(_controller.text),
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+
+              ref
+                  .read(addFriendProvider.notifier)
+                  .findUserWithCode(_controller.text);
+            },
             child: const Text('검색'),
           ),
         )
