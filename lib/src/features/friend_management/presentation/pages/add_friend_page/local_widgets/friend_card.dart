@@ -1,7 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:chat_application/src/core/utils/dialogs.dart';
-import 'package:chat_application/src/core/values/exceptions/add_freind_exception.dart';
+import 'package:chat_application/src/core/values/exceptions/add_friend_exception.dart';
+import 'package:chat_application/src/core/values/exceptions/base_exception.dart';
 import 'package:chat_application/src/features/friend_management/domain/model/user_info.dart';
 import 'package:chat_application/src/features/friend_management/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,12 @@ class FriendCard extends ConsumerWidget {
 
       _showFinishDialog(context);
     } catch (e) {
+      if (e is BaseException) {
+        Dialogs.showError(e, context);
+
+        return;
+      }
+
       Dialogs.showError(const UnknownException(), context);
     }
   }
