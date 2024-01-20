@@ -30,8 +30,8 @@ final class MainRoutes {
   );
 }
 
-final class ChatsRoutes {
-  const ChatsRoutes._();
+final class ChatsSubRoutes {
+  const ChatsSubRoutes._();
 
   static final AppPath conversationInvite = AppPath(
     name: 'conversation_invite',
