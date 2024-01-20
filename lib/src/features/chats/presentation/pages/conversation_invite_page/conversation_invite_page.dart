@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'local_widgets/friends_listview.dart';
 import 'local_widgets/search_friend_field.dart';
-import 'local_widgets/selected_count.dart';
+import 'local_widgets/selected_friends_expansion_tile.dart';
 
 class ConversationInvitePage extends StatelessWidget {
   const ConversationInvitePage({super.key});
