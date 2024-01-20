@@ -6,10 +6,13 @@ import 'package:chat_application/src/features/friend_management/dependency_injec
     as FriendManagement;
 import 'package:chat_application/src/features/account_management/dependency_injection.dart'
     as AccountManagement;
+import 'package:chat_application/src/features/chats/dependency_injection.dart'
+    as Chats;
 
 void initialize() {
   Auth.initializeDependencyInjection();
   Friends.initializeDependencyInjection();
   FriendManagement.initializeDependencyInjection();
   AccountManagement.initializeDependecyInjection();
+  Chats.intializeDependencyInjection();
 }
