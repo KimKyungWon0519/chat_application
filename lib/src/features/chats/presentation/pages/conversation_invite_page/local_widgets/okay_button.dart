@@ -11,7 +11,11 @@ class OkayButton extends ConsumerWidget {
     List<UserInfo> selectedFriends =
         ref.watch(conversationInviteProvider).selectedFriends;
     return TextButton(
-      onPressed: selectedFriends.isNotEmpty ? () {} : null,
+      onPressed: selectedFriends.isNotEmpty
+          ? () {
+              ref.read(conversationInviteProvider.notifier).createChat();
+            }
+          : null,
       child: const Text('확인'),
     );
   }

@@ -19,3 +19,9 @@ final class FriendFieldKey {
 
   static const String uids = 'uids';
 }
+
+final class ChatFieldKey {
+  const ChatFieldKey._();
+
+  static const String uids = 'uids';
+}

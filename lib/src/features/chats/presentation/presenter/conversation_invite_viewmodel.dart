@@ -50,6 +50,12 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
     return state.selectedFriends.contains(userInfo);
   }
 
+  Future<void> createChat() async {
+    String id = await _addChatUseCsae.createChat(state.selectedFriends);
+
+    print(id);
+  }
+
   Future<List<UserInfo>> _getAllFriends() async {
     return _getFriendsUseCase.getAllFriends().then((value) async {
       List<UserInfo> data = [];
