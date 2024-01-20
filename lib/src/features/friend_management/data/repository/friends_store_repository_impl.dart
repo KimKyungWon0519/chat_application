@@ -17,14 +17,14 @@ class FriendsStoreRepositoryImpl extends FriendsStoreRepository {
       List uids = [];
 
       if (value.data() != null) {
-        uids = value.data()!['uids'] ?? [];
+        uids = value.data()![FriendFieldKey.uids] ?? [];
       }
 
       if (uids.contains(uid)) throw const AlreadyFriendException();
 
       uids.add(uid);
 
-      value.reference.set({'uids': uids});
+      value.reference.set({FriendFieldKey.uids: uids});
     });
   }
 }

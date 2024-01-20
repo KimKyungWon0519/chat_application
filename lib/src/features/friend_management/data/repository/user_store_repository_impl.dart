@@ -16,7 +16,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .doc(user.uid)
         .get()
         .then((value) {
-      return value.data()!['code'];
+      return value.data()![UserFieldKey.code];
     });
   }
 
@@ -24,7 +24,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   Future<Domain.UserInfo?> getUserWithCode(String code) {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.users)
-        .where('code', isEqualTo: code)
+        .where(UserFieldKey.code, isEqualTo: code)
         .get()
         .then((value) {
       if (value.docs.isEmpty) return null;
