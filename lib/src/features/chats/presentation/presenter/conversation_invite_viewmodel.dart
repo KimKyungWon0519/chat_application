@@ -1,4 +1,5 @@
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
+import 'package:chat_application/src/features/chats/domain/usecase/chats_usecase.dart';
 import 'package:chat_application/src/features/chats/domain/usecase/friends_usecase.dart';
 import 'package:chat_application/src/features/chats/domain/usecase/users_usecase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,12 +7,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
   final GetFriendsUseCase _getFriendsUseCase;
   final GetUserInfoUseCase _getUserInfoUseCase;
+  final AddChatUseCase _addChatUseCsae;
 
   ConversationInviteViewModel({
     required GetFriendsUseCase getFriendsUseCase,
     required GetUserInfoUseCase getUserInfoUseCase,
+    required AddChatUseCase addChatUseCsae,
   })  : _getFriendsUseCase = getFriendsUseCase,
         _getUserInfoUseCase = getUserInfoUseCase,
+        _addChatUseCsae = addChatUseCsae,
         super(const InvitedInfoState.empty()) {
     _getAllFriends()
         .then((value) => state = state.copyWith(friends: value.toList()));
