@@ -14,31 +14,39 @@ class FriendsListView extends ConsumerWidget {
     return ListView.builder(
       itemBuilder: (context, index) => _FriendItem(
         userInfo: invitedInfoState.friends[index],
-        isChecked: false,
       ),
       itemCount: invitedInfoState.friends.length,
     );
   }
 }
 
-class _FriendItem extends StatelessWidget {
+class _FriendItem extends ConsumerWidget {
   final UserInfo userInfo;
-  final bool isChecked;
 
   const _FriendItem({
     super.key,
     required this.userInfo,
-    required this.isChecked,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ConversationInviteViewModel conversationInviteViewModel =
+        ref.read(conversationInviteProvider.notifier);
+
     return ListTile(
       leading: const Icon(Icons.account_circle),
       title: Text(userInfo.name),
       trailing: Checkbox(
-        value: isChecked,
-        onChanged: (value) {},
+        value: conversationInviteViewModel.isSelected(userInfo),
+        onChanged: (value) {
+          if (value == null) return;
+
+          if (value) {
+            conversationInviteViewModel.selectedFriend(userInfo);
+          } else {
+            conversationInviteViewModel.unselectedFriend(userInfo);
+          }
+        },
       ),
     );
   }

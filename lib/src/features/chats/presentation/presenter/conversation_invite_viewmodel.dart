@@ -17,6 +17,26 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
         .then((value) => state = state.copyWith(friends: value.toList()));
   }
 
+  void selectedFriend(UserInfo userInfo) {
+    List<UserInfo> selectedFriends = state.selectedFriends.toList();
+
+    selectedFriends.add(userInfo);
+
+    state = state.copyWith(selectedFriends: selectedFriends);
+  }
+
+  void unselectedFriend(UserInfo userInfo) {
+    List<UserInfo> selectedFriends = state.selectedFriends.toList();
+
+    selectedFriends.remove(userInfo);
+
+    state = state.copyWith(selectedFriends: selectedFriends);
+  }
+
+  bool isSelected(UserInfo userInfo) {
+    return state.selectedFriends.contains(userInfo);
+  }
+
   Future<List<UserInfo>> _getAllFriends() async {
     return _getFriendsUseCase.getAllFriends().then((value) async {
       List<UserInfo> data = [];
