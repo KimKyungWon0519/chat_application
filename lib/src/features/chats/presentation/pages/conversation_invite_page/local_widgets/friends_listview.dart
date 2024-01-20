@@ -12,17 +12,34 @@ class FriendsListView extends ConsumerWidget {
     InvitedInfoState invitedInfoState = ref.watch(conversationInviteProvider);
 
     return ListView.builder(
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: const Icon(Icons.account_circle),
-          title: Text(invitedInfoState.friends[index].name),
-          trailing: Checkbox(
-            value: false,
-            onChanged: (value) {},
-          ),
-        );
-      },
+      itemBuilder: (context, index) => _FriendItem(
+        userInfo: invitedInfoState.friends[index],
+        isChecked: false,
+      ),
       itemCount: invitedInfoState.friends.length,
+    );
+  }
+}
+
+class _FriendItem extends StatelessWidget {
+  final UserInfo userInfo;
+  final bool isChecked;
+
+  const _FriendItem({
+    super.key,
+    required this.userInfo,
+    required this.isChecked,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: const Icon(Icons.account_circle),
+      title: Text(userInfo.name),
+      trailing: Checkbox(
+        value: isChecked,
+        onChanged: (value) {},
+      ),
     );
   }
 }
