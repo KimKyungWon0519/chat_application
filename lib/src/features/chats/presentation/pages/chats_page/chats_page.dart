@@ -8,6 +8,12 @@ class ChatsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('채팅'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
