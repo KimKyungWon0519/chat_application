@@ -12,6 +12,6 @@ class FriendsStoreRepositoryImpl extends FriendsStoreRepository {
         .collection(CloudFirestorePath.friends)
         .doc(user.uid)
         .snapshots()
-        .map((event) => event.data()!['uids']);
+        .map((event) => event.data()![FriendFieldKey.uids]);
   }
 }

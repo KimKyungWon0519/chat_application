@@ -10,8 +10,8 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
         .doc(uid)
         .set(
       {
-        'name': name,
-        'code': uid.substring(0, 6),
+        UserFieldKey.name: name,
+        UserFieldKey.code: uid.substring(0, 6),
       },
     );
   }
