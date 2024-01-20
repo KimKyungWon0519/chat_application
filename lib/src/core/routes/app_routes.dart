@@ -30,6 +30,15 @@ final class MainRoutes {
   );
 }
 
+final class ChatsRoutes {
+  const ChatsRoutes._();
+
+  static final AppPath conversationInvite = AppPath(
+    name: 'conversation_invite',
+    path: '${MainRoutes.chats.path}/conversation_invite',
+  );
+}
+
 final class FriendManagementRoutes {
   const FriendManagementRoutes._();
 

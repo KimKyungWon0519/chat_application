@@ -3,6 +3,7 @@ import 'package:chat_application/src/features/account_management/presentation/pa
 import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signup_page/signup_page.dart';
 import 'package:chat_application/src/features/chats/presentation/pages/chats_page/chats_page.dart';
+import 'package:chat_application/src/features/chats/presentation/pages/conversation_invite_page/conversation_invite_page.dart';
 import 'package:chat_application/src/features/friend_management/presentation/pages/add_friend_page/add_friend_page.dart';
 import 'package:chat_application/src/features/friend_management/presentation/pages/friend_management_page/friend_managemant_page.dart';
 import 'package:chat_application/src/features/friends/presentation/pages/friends_page/friends_page.dart';
@@ -62,6 +63,11 @@ final class AppPages {
         ],
         builder: (context, state, navigationShell) =>
             NavigatorPage(navigationShell),
+      ),
+      GoRoute(
+        path: ChatsSubRoutes.conversationInvite.path,
+        name: ChatsSubRoutes.conversationInvite.name,
+        builder: (context, state) => const ConversationInvitePage(),
       ),
       GoRoute(
         path: FriendManagementRoutes.friendManagement.path,
