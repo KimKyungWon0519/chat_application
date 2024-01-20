@@ -3,15 +3,15 @@ import 'package:chat_application/src/core/widgets/setting_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class FriendManagementTile extends StatelessWidget {
-  const FriendManagementTile({super.key});
+class AccountManagementTile extends StatelessWidget {
+  const AccountManagementTile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SettingTile(
-      name: '친구 관리',
+      name: '계정 설정',
       onTap: () =>
-          context.pushNamed(FriendManagementRoutes.friendManagement.name),
+          context.pushNamed(AccountManagementRoutes.accountManagement.name),
     );
   }
 }

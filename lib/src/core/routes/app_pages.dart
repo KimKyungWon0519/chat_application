@@ -1,4 +1,5 @@
 import 'package:chat_application/src/core/routes/app_routes.dart';
+import 'package:chat_application/src/features/account_management/presentation/pages/account_management_page/account_management_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signup_page/signup_page.dart';
 import 'package:chat_application/src/features/chats/presentation/pages/chats_page/chats_page.dart';
@@ -73,6 +74,11 @@ final class AppPages {
             builder: (context, state) => const AddFriendPage(),
           ),
         ],
+      ),
+      GoRoute(
+        path: AccountManagementRoutes.accountManagement.path,
+        name: AccountManagementRoutes.accountManagement.name,
+        builder: (context, state) => const AccountManagementPage(),
       ),
     ],
     redirect: (context, state) {
