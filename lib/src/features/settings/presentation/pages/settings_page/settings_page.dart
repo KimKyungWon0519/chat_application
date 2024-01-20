@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
       ),
       body: const Column(
         children: [
-          AccountManagementButton(),
+          AccountManagementTile(),
           Divider(),
           FriendManagementTile(),
         ],

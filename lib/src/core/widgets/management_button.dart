@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ManagementButton extends StatelessWidget {
+class ManagementTile extends StatelessWidget {
   final String name;
   final VoidCallback onTap;
 
-  const ManagementButton({
+  const ManagementTile({
     super.key,
     required this.name,
     required this.onTap,

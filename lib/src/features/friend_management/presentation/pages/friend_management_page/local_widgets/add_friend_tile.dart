@@ -8,7 +8,7 @@ class AddFriendTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ManagementButton(
+    return ManagementTile(
       name: '친구 추가',
       onTap: () => context.pushNamed(FriendManagementRoutes.addFriend.name),
     );
