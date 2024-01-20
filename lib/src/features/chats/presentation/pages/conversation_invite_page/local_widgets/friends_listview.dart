@@ -14,7 +14,7 @@ class FriendsListView extends ConsumerWidget {
       itemBuilder: (context, index) {
         return ListTile(
           leading: const Icon(Icons.account_circle),
-          title: const Text('이름'),
+          title: Text(users[index].name),
           trailing: Checkbox(
             value: false,
             onChanged: (value) {},
