@@ -5,7 +5,7 @@ import 'package:chat_application/src/features/account_management/presentation/pr
 import 'package:chat_application/src/features/account_management/presentation/presenter/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void depencyInjection() {
+void initializeDependecyInjection() {
   /* Start Initialize Repository */
 
   AuthRepository authRepository = AuthRepositoryImpl();
