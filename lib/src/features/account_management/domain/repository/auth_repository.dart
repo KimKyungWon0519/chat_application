@@ -1,1 +1,3 @@
-abstract class AuthRepository {}
+abstract class AuthRepository {
+  Future<void> signout();
+}
