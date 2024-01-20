@@ -1,4 +1,4 @@
-import 'package:chat_application/src/features/auth/domain/usecase/firebae_auth_usecase.dart';
+import 'package:chat_application/src/features/account_management/domain/usecase/auth_usecase.dart';
 
 class AccountManagementViewModel {
   final AuthUseCase _authUseCase;
