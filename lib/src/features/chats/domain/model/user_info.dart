@@ -6,4 +6,7 @@ class UserInfo {
     required this.name,
     required this.uid,
   });
+
+  @override
+  bool operator ==(covariant UserInfo other) => name == other.name;
 }
