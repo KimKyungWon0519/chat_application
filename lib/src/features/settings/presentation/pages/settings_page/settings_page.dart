@@ -1,3 +1,4 @@
+import 'package:chat_application/src/features/settings/presentation/pages/settings_page/local_widgets/account_management_button.dart';
 import 'package:chat_application/src/features/settings/presentation/pages/settings_page/local_widgets/friend_management_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,8 @@ class SettingsPage extends StatelessWidget {
       ),
       body: const Column(
         children: [
+          AccountManagementButton(),
+          Divider(),
           FriendManagementTile(),
         ],
       ),
