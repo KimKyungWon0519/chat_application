@@ -33,6 +33,15 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
     state = state.copyWith(selectedFriends: selectedFriends);
   }
 
+  void searchUserWithName(String name) async {
+    List<UserInfo> users = await _getAllFriends();
+
+    List<UserInfo> searchUsers =
+        users.where((element) => element.name == name).toList();
+
+    state = state.copyWith(friends: searchUsers.toList());
+  }
+
   bool isSelected(UserInfo userInfo) {
     return state.selectedFriends.contains(userInfo);
   }
