@@ -18,7 +18,7 @@ class ConversationInvitePage extends StatelessWidget {
         child: Column(
           children: [
             SearchFriendField(),
-            SelectedCount(),
+            SelectedFriendsExpansionTile(),
             Expanded(
               child: FriendsListView(),
             ),
