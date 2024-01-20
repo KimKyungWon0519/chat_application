@@ -42,3 +42,12 @@ final class FriendManagementRoutes {
     path: 'add_friend',
   );
 }
+
+final class AccountManagementRoutes {
+  const AccountManagementRoutes._();
+
+  static final AppPath accountManagement = AppPath(
+    name: 'accout_management',
+    path: '${MainRoutes.settings.path}/account_management',
+  );
+}
