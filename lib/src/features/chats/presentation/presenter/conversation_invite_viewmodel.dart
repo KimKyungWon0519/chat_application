@@ -13,8 +13,18 @@ class ConversationInviteViewModel extends StateNotifier<List<UserInfo>> {
   })  : _getFriendsUseCase = getFriendsUseCase,
         _getUserInfoUseCase = getUserInfoUseCase,
         super([]) {
-    _getFriendsUseCase.getAllFriends().then((value) {
-      print(value);
+    _getAllFriends().then((value) => state = value);
+  }
+
+  Future<List<UserInfo>> _getAllFriends() async {
+    return _getFriendsUseCase.getAllFriends().then((value) async {
+      List<UserInfo> data = [];
+
+      for (String uid in value) {
+        data.add(await _getUserInfoUseCase.getUserInfo(uid));
+      }
+
+      return data;
     });
   }
 }
