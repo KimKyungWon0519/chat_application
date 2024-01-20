@@ -3,4 +3,4 @@ import 'package:chat_application/src/features/chats/presentation/presenter/conve
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 late final AutoDisposeStateNotifierProvider<ConversationInviteViewModel,
-    List<UserInfo>> conversationInviteProvider;
+    InvitedInfoState> conversationInviteProvider;
