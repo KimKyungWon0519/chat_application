@@ -1,3 +1,3 @@
 abstract class FriendsStoreRepository {
-  Future<List<String>> getAllFriends(String uid);
+  Future<List<String>> getAllFriends();
 }

@@ -6,4 +6,8 @@ class GetFriendsUseCase {
   GetFriendsUseCase({
     required FriendsStoreRepository friendsStoreRepository,
   }) : _friendsStoreRepository = friendsStoreRepository;
+
+  Future<List<String>> getAllFriends() {
+    return _friendsStoreRepository.getAllFriends();
+  }
 }
