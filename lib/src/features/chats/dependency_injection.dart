@@ -22,7 +22,7 @@ void intializeDependencyInjection() {
 
   /* Start Intialize ViewModel */
 
-  conversationInviteProvider = StateNotifierProvider(
+  conversationInviteProvider = AutoDisposeStateNotifierProvider(
     (ref) => ConversationInviteViewModel(
       getFriendsUseCase: getFriendsUseCase,
     ),

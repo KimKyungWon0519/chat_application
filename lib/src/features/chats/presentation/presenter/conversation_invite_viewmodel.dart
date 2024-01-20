@@ -8,5 +8,9 @@ class ConversationInviteViewModel extends StateNotifier<List<UserInfo>> {
   ConversationInviteViewModel({
     required GetFriendsUseCase getFriendsUseCase,
   })  : _getFriendsUseCase = getFriendsUseCase,
-        super([]);
+        super([]) {
+    _getFriendsUseCase.getAllFriends().then((value) {
+      print(value);
+    });
+  }
 }
