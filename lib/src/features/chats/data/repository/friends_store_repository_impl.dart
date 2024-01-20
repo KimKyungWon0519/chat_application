@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FriendsStoreRepositoryImpl extends FriendsStoreRepository {
   @override
-  Future<List<String>> getAllFriends() {
+  Future<List> getAllFriends() {
     return FirebaseFirestore.instance
         .collection(CloudFirestorePath.friends)
         .doc(FirebaseAuth.instance.currentUser!.uid)

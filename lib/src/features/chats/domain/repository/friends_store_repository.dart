@@ -1,3 +1,3 @@
 abstract class FriendsStoreRepository {
-  Future<List<String>> getAllFriends();
+  Future<List> getAllFriends();
 }
