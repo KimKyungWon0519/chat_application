@@ -1,4 +1,6 @@
 import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/features/chats/data/mapper/chat_info_mapper.dart';
+import 'package:chat_application/src/features/chats/domain/model/chat_info.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart'
     as Domain;
 import 'package:chat_application/src/features/chats/domain/repository/chats_store_repository.dart';
@@ -41,6 +43,28 @@ class ChatsStoreRepositoryImpl extends ChatsStoreRepository {
       }
 
       return null;
+    });
+  }
+
+  @override
+  Stream<List<ChatInfo>> getChatsSnapshot() {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+
+    return FirebaseFirestore.instance
+        .collection(CloudFirestorePath.chats)
+        .where(ChatFieldKey.uids, arrayContains: uid)
+        .snapshots()
+        .map((event) {
+      List<ChatInfo> chats = [];
+      List<QueryDocumentSnapshot<Map<String, dynamic>>> queryDocuments =
+          event.docs;
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> queryDocument
+          in queryDocuments) {
+        chats.add(queryDocument.data().toChatInfo(queryDocument.id));
+      }
+
+      return chats;
     });
   }
 }

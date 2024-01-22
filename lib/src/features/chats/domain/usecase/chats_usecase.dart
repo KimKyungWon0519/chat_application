@@ -1,3 +1,4 @@
+import 'package:chat_application/src/features/chats/domain/model/chat_info.dart';
 import 'package:chat_application/src/features/chats/domain/repository/chats_store_repository.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
 
@@ -22,5 +23,9 @@ class GetChatUseCase {
 
   Future<String?> getChatID(List<UserInfo> users) {
     return _chatsStoreRepository.getChatID(users);
+  }
+
+  Stream<List<ChatInfo>> getChatsSnapshot() {
+    return _chatsStoreRepository.getChatsSnapshot();
   }
 }
