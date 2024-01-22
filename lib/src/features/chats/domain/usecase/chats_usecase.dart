@@ -12,3 +12,15 @@ class AddChatUseCase {
     return _chatsStoreRepository.createChat(users);
   }
 }
+
+class GetChatUseCase {
+  final ChatsStoreRepository _chatsStoreRepository;
+
+  GetChatUseCase({
+    required ChatsStoreRepository chatsStoreRepository,
+  }) : _chatsStoreRepository = chatsStoreRepository;
+
+  Future<String?> getChatID(List<UserInfo> users) {
+    return _chatsStoreRepository.getChatID(users);
+  }
+}

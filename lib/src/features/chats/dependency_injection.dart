@@ -34,6 +34,10 @@ void intializeDependencyInjection() {
     chatsStoreRepository: chatsStoreRepository,
   );
 
+  GetChatUseCase getChatUseCase = GetChatUseCase(
+    chatsStoreRepository: chatsStoreRepository,
+  );
+
   /* End Initialize UseCase */
 
   /* Start Intialize ViewModel */
@@ -43,6 +47,7 @@ void intializeDependencyInjection() {
       getFriendsUseCase: getFriendsUseCase,
       getUserInfoUseCase: getUserInfoUseCase,
       addChatUseCsae: addChatUseCase,
+      getChatUseCase: getChatUseCase,
     ),
   );
 

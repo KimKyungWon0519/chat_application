@@ -8,14 +8,17 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
   final GetFriendsUseCase _getFriendsUseCase;
   final GetUserInfoUseCase _getUserInfoUseCase;
   final AddChatUseCase _addChatUseCsae;
+  final GetChatUseCase _getChatUseCase;
 
   ConversationInviteViewModel({
     required GetFriendsUseCase getFriendsUseCase,
     required GetUserInfoUseCase getUserInfoUseCase,
     required AddChatUseCase addChatUseCsae,
+    required GetChatUseCase getChatUseCase,
   })  : _getFriendsUseCase = getFriendsUseCase,
         _getUserInfoUseCase = getUserInfoUseCase,
         _addChatUseCsae = addChatUseCsae,
+        _getChatUseCase = getChatUseCase,
         super(const InvitedInfoState.empty()) {
     _getAllFriends()
         .then((value) => state = state.copyWith(friends: value.toList()));
@@ -50,11 +53,11 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
     return state.selectedFriends.contains(userInfo);
   }
 
-  Future<void> createChat() async {
-    String id = await _addChatUseCsae.createChat(state.selectedFriends);
+  Future<String?> getChatID() =>
+      _getChatUseCase.getChatID(state.selectedFriends);
 
-    print(id);
-  }
+  Future<String?> createChat() =>
+      _addChatUseCsae.createChat(state.selectedFriends);
 
   Future<List<UserInfo>> _getAllFriends() async {
     return _getFriendsUseCase.getAllFriends().then((value) async {
