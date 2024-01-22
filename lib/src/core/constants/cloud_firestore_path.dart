@@ -3,6 +3,7 @@ final class CloudFirestorePath {
 
   static const String users = 'users';
   static const String friends = 'friends';
+  static const String chats = 'chats';
 }
 
 final class UserFieldKey {
@@ -15,6 +16,12 @@ final class UserFieldKey {
 
 final class FriendFieldKey {
   const FriendFieldKey._();
+
+  static const String uids = 'uids';
+}
+
+final class ChatFieldKey {
+  const ChatFieldKey._();
 
   static const String uids = 'uids';
 }
