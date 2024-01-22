@@ -1,7 +1,9 @@
+import 'package:chat_application/src/core/routes/app_path_contants.dart';
 import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:chat_application/src/features/account_management/presentation/pages/account_management_page/account_management_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signin_page/signin_page.dart';
 import 'package:chat_application/src/features/auth/presentation/pages/signup_page/signup_page.dart';
+import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/chat_room_page.dart';
 import 'package:chat_application/src/features/chats/presentation/pages/chats_page/chats_page.dart';
 import 'package:chat_application/src/features/chats/presentation/pages/conversation_invite_page/conversation_invite_page.dart';
 import 'package:chat_application/src/features/friend_management/presentation/pages/add_friend_page/add_friend_page.dart';
@@ -68,6 +70,12 @@ final class AppPages {
         path: ChatsSubRoutes.conversationInvite.path,
         name: ChatsSubRoutes.conversationInvite.name,
         builder: (context, state) => const ConversationInvitePage(),
+      ),
+      GoRoute(
+        path: ChatsSubRoutes.chatRoom.path,
+        name: ChatsSubRoutes.chatRoom.name,
+        builder: (context, state) =>
+            ChatRoomPage(state.pathParameters[ChatRoomParamter.chatID] ?? ''),
       ),
       GoRoute(
         path: FriendManagementRoutes.friendManagement.path,

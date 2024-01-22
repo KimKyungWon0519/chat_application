@@ -7,3 +7,7 @@ final class AppPath {
     required this.path,
   });
 }
+
+final class ChatRoomParamter {
+  static const String chatID = 'chat_id';
+}

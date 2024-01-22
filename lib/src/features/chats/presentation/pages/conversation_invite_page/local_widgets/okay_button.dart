@@ -1,8 +1,11 @@
+import 'package:chat_application/src/core/routes/app_path_contants.dart';
+import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/conversation_invite_viewmodel.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class OkayButton extends ConsumerWidget {
   const OkayButton({super.key});
@@ -25,5 +28,14 @@ class OkayButton extends ConsumerWidget {
     String? chatID = await conversationInviteViewModel.getChatID();
 
     chatID ??= await conversationInviteViewModel.createChat();
+
+    if (context.mounted) {
+      context.replaceNamed(
+        ChatsSubRoutes.chatRoom.name,
+        pathParameters: {
+          ChatRoomParamter.chatID: chatID!,
+        },
+      );
+    }
   }
 }

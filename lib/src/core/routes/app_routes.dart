@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/routes/app_path.dart';
+import 'package:chat_application/src/core/routes/app_path_contants.dart';
 
 final class AuthRoutes {
   const AuthRoutes._();
@@ -36,6 +36,11 @@ final class ChatsSubRoutes {
   static final AppPath conversationInvite = AppPath(
     name: 'conversation_invite',
     path: '${MainRoutes.chats.path}/conversation_invite',
+  );
+
+  static final AppPath chatRoom = AppPath(
+    name: 'chat_room',
+    path: '${MainRoutes.chats.path}/:${ChatRoomParamter.chatID}',
   );
 }
 
