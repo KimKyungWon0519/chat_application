@@ -11,4 +11,6 @@ class GetUserInfoUseCase {
   Future<UserInfo> getUserInfo(String uid) {
     return _usersStoreRepository.getUserInfo(uid);
   }
+
+  String getMyUid() => _usersStoreRepository.getMyUid();
 }

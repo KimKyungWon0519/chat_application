@@ -8,16 +8,11 @@ class ChatListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return StreamBuilder(
-      stream: ref.read(chatsProvider).getChatsSnapshot(),
-      builder: (context, snapshot) {
-        List<ChatInfo> data = snapshot.data ?? [];
+    List<ChatInfo> chats = ref.watch(chatsProvider);
 
-        return ListView.builder(
-          itemBuilder: (context, index) => _ChatItem(chatInfo: data[index]),
-          itemCount: data.length,
-        );
-      },
+    return ListView.builder(
+      itemBuilder: (context, index) => _ChatItem(chatInfo: chats[index]),
+      itemCount: chats.length,
     );
   }
 }

@@ -52,9 +52,10 @@ void intializeDependencyInjection() {
     ),
   );
 
-  chatsProvider = Provider(
+  chatsProvider = AutoDisposeStateNotifierProvider(
     (ref) => ChatsViewModel(
       getChatUseCase: getChatUseCase,
+      getUserInfoUseCase: getUserInfoUseCase,
     ),
   );
 

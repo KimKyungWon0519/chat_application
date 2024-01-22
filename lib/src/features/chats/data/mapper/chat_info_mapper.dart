@@ -6,6 +6,9 @@ extension MapExtension on Map {
     return ChatInfo(
       id: id,
       name: this[ChatFieldKey.name] ?? '',
+      uids: (this[ChatFieldKey.uids] as List ?? [])
+          .map((e) => e as String)
+          .toList(),
     );
   }
 }
