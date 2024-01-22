@@ -6,6 +6,7 @@ import 'package:chat_application/src/features/chats/domain/repository/users_stor
 import 'package:chat_application/src/features/chats/domain/usecase/chats_usecase.dart';
 import 'package:chat_application/src/features/chats/domain/usecase/friends_usecase.dart';
 import 'package:chat_application/src/features/chats/domain/usecase/users_usecase.dart';
+import 'package:chat_application/src/features/chats/presentation/presenter/chats_viewmodel.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/conversation_invite_viewmodel.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/providers.dart';
 import 'package:chat_application/src/features/chats/data/repository/users_store_repository_impl.dart';
@@ -47,6 +48,12 @@ void intializeDependencyInjection() {
       getFriendsUseCase: getFriendsUseCase,
       getUserInfoUseCase: getUserInfoUseCase,
       addChatUseCsae: addChatUseCase,
+      getChatUseCase: getChatUseCase,
+    ),
+  );
+
+  chatsProvider = Provider(
+    (ref) => ChatsViewModel(
       getChatUseCase: getChatUseCase,
     ),
   );
