@@ -1,7 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:chat_application/src/core/routes/app_path_contants.dart';
 import 'package:chat_application/src/core/routes/app_routes.dart';
 import 'package:chat_application/src/core/utils/dialogs.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
+import 'package:chat_application/src/features/chats/presentation/pages/conversation_invite_page/local_widgets/input_name_dialog.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/conversation_invite_viewmodel.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +26,7 @@ class OkayButton extends ConsumerWidget {
   }
 
   void _onPressed(BuildContext context, WidgetRef ref) async {
-    bool isLoading = false;
+    bool isLoading = true;
     Dialogs.showLoading(context, isLoading);
 
     ConversationInviteViewModel conversationInviteViewModel =
@@ -31,7 +34,21 @@ class OkayButton extends ConsumerWidget {
 
     String? chatID = await conversationInviteViewModel.getChatID();
 
-    chatID ??= await conversationInviteViewModel.createChat();
+    if (chatID == null) {
+      String? name;
+
+      if (ref.read(conversationInviteProvider).selectedFriends.length >= 2) {
+        name = await _inputName(context, ref);
+
+        if (name == null) {
+          isLoading = false;
+          context.pop();
+          return;
+        }
+      }
+
+      chatID = await conversationInviteViewModel.createChat(name);
+    }
 
     isLoading = false;
 
@@ -45,4 +62,10 @@ class OkayButton extends ConsumerWidget {
       );
     }
   }
+
+  Future<String?> _inputName(BuildContext context, WidgetRef ref) =>
+      showDialog<String>(
+        context: context,
+        builder: (context) => const InputNmeDialog(),
+      );
 }

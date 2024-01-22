@@ -56,8 +56,8 @@ class ConversationInviteViewModel extends StateNotifier<InvitedInfoState> {
   Future<String?> getChatID() =>
       _getChatUseCase.getChatID(state.selectedFriends);
 
-  Future<String?> createChat() =>
-      _addChatUseCsae.createChat(state.selectedFriends);
+  Future<String?> createChat([String? name]) =>
+      _addChatUseCsae.createChat(state.selectedFriends, name);
 
   Future<List<UserInfo>> _getAllFriends() async {
     return _getFriendsUseCase.getAllFriends().then((value) async {

@@ -24,4 +24,5 @@ final class ChatFieldKey {
   const ChatFieldKey._();
 
   static const String uids = 'uids';
+  static const String name = 'name';
 }
