@@ -1,4 +1,5 @@
 import 'package:chat_application/src/core/routes/app_routes.dart';
+import 'package:chat_application/src/features/chats/presentation/pages/chats_page/local_widgets/chat_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,6 +19,7 @@ class ChatsPage extends StatelessWidget {
           ),
         ],
       ),
+      body: const ChatListView(),
     );
   }
 }
