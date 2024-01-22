@@ -1,5 +1,6 @@
 import 'package:chat_application/src/core/routes/app_path_contants.dart';
 import 'package:chat_application/src/core/routes/app_routes.dart';
+import 'package:chat_application/src/core/utils/dialogs.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/conversation_invite_viewmodel.dart';
 import 'package:chat_application/src/features/chats/presentation/presenter/providers.dart';
@@ -22,6 +23,9 @@ class OkayButton extends ConsumerWidget {
   }
 
   void _onPressed(BuildContext context, WidgetRef ref) async {
+    bool isLoading = false;
+    Dialogs.showLoading(context, isLoading);
+
     ConversationInviteViewModel conversationInviteViewModel =
         ref.read(conversationInviteProvider.notifier);
 
@@ -29,7 +33,10 @@ class OkayButton extends ConsumerWidget {
 
     chatID ??= await conversationInviteViewModel.createChat();
 
+    isLoading = false;
+
     if (context.mounted) {
+      context.pop();
       context.replaceNamed(
         ChatsSubRoutes.chatRoom.name,
         pathParameters: {
