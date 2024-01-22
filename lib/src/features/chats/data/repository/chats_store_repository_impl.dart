@@ -8,13 +8,14 @@ import 'package:flutter/foundation.dart';
 
 class ChatsStoreRepositoryImpl extends ChatsStoreRepository {
   @override
-  Future<String> createChat(List<Domain.UserInfo> users) {
+  Future<String> createChat(List<Domain.UserInfo> users, String? name) async {
     String myUid = FirebaseAuth.instance.currentUser!.uid;
     List<String> uids = [myUid, ...users.map((e) => e.uid).toList()];
 
-    return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.chats)
-        .add({ChatFieldKey.uids: uids}).then((value) => value.id);
+    return FirebaseFirestore.instance.collection(CloudFirestorePath.chats).add({
+      ChatFieldKey.uids: uids,
+      ChatFieldKey.name: name,
+    }).then((value) => value.id);
   }
 
   @override

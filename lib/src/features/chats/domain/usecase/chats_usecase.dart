@@ -8,8 +8,8 @@ class AddChatUseCase {
     required ChatsStoreRepository chatsStoreRepository,
   }) : _chatsStoreRepository = chatsStoreRepository;
 
-  Future<String> createChat(List<UserInfo> users) {
-    return _chatsStoreRepository.createChat(users);
+  Future<String> createChat(List<UserInfo> users, String? name) {
+    return _chatsStoreRepository.createChat(users, name);
   }
 }
 
