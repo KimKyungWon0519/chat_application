@@ -1,3 +1,4 @@
+import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/lcoal_widget/chat_name_text.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoomPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class ChatRoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('채팅'),
+        title: ChatNameText(chatID),
       ),
     );
   }

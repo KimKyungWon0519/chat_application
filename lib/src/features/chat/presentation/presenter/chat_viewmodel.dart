@@ -6,4 +6,8 @@ class ChatViewModel {
   ChatViewModel({
     required GetChatDataUseCase getChatDataUseCase,
   }) : _getChatDataUseCase = getChatDataUseCase;
+
+  Future<String> getChatName(String chatID) {
+    return _getChatDataUseCase.getChatName(chatID);
+  }
 }
