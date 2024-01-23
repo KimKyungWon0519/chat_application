@@ -28,10 +28,18 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
         .doc(chatID)
         .snapshots()
         .map(
-          (event) => (event.get(ChatFieldKey.uids) as List)
-              .map((e) => e as String)
-              .toList(),
-        );
+      (event) {
+        List<String> data = (event.get(ChatFieldKey.uids) as List)
+            .map((e) => e as String)
+            .toList();
+        String myUid = FirebaseAuth.instance.currentUser!.uid;
+
+        data.remove(myUid);
+        data.insert(0, myUid);
+
+        return data;
+      },
+    );
   }
 
   Future<String> _getFriendName(List uids) {
