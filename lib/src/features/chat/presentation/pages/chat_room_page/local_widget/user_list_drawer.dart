@@ -1,20 +1,22 @@
+import 'package:chat_application/src/features/chat/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserListDrawer extends StatelessWidget {
-  const UserListDrawer({super.key});
+  final String chatID;
+
+  const UserListDrawer({
+    super.key,
+    required this.chatID,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Drawer(
+    return Drawer(
       child: Column(
         children: [
-          _TalkersListTitle(),
-          ListTile(
-            title: Text('나'),
-          ),
-          ListTile(
-            title: Text('응애 응애'),
-          ),
+          const _TalkersListTitle(),
+          _TalkerListView(chatID),
         ],
       ),
     );
@@ -36,6 +38,45 @@ class _TalkersListTitle extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
         ),
+      ),
+    );
+  }
+}
+
+class _TalkerListView extends ConsumerWidget {
+  final String chatID;
+
+  const _TalkerListView(this.chatID, {super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return StreamBuilder(
+      stream: ref.read(chatProvider).getTalkerUIDSnapshot(chatID),
+      builder: (context, snapshot) {
+        List<String> talkerUID = snapshot.data ?? [];
+
+        return Column(
+          children: [
+            for (int i = 0; i < talkerUID.length; i++)
+              _TalkerItem(talkerUID[i]),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _TalkerItem extends ConsumerWidget {
+  final String uid;
+
+  const _TalkerItem(this.uid, {super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return StreamBuilder(
+      stream: ref.read(chatProvider).getUserNameSnapshot(uid),
+      builder: (context, snapshot) => ListTile(
+        title: Text(snapshot.data ?? ''),
       ),
     );
   }

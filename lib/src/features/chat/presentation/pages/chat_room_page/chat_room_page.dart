@@ -1,5 +1,5 @@
-import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/lcoal_widget/chat_name_text.dart';
-import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/lcoal_widget/user_list_drawer.dart';
+import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/local_widget/chat_name_text.dart';
+import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/local_widget/user_list_drawer.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoomPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class ChatRoomPage extends StatelessWidget {
       appBar: AppBar(
         title: ChatNameText(chatID),
       ),
-      endDrawer: const UserListDrawer(),
+      endDrawer: UserListDrawer(chatID: chatID),
     );
   }
 }

@@ -21,6 +21,19 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
     });
   }
 
+  @override
+  Stream<List<String>> getTalkersSnapshot(String chatID) {
+    return FirebaseFirestore.instance
+        .collection(CloudFirestorePath.chats)
+        .doc(chatID)
+        .snapshots()
+        .map(
+          (event) => (event.get(ChatFieldKey.uids) as List)
+              .map((e) => e as String)
+              .toList(),
+        );
+  }
+
   Future<String> _getFriendName(List uids) {
     uids.remove(FirebaseAuth.instance.currentUser!.uid);
 

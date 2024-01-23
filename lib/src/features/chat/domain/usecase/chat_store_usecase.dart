@@ -10,4 +10,8 @@ class GetChatDataUseCase {
   Future<String> getChatName(String chatID) {
     return _chatStoreRepository.getChatName(chatID);
   }
+
+  Stream<List<String>> getTalkersSnapshot(String chatID) {
+    return _chatStoreRepository.getTalkersSnapshot(chatID);
+  }
 }
