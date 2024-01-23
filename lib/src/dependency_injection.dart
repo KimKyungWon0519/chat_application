@@ -8,6 +8,8 @@ import 'package:chat_application/src/features/account_management/dependency_inje
     as AccountManagement;
 import 'package:chat_application/src/features/chats/dependency_injection.dart'
     as Chats;
+import 'package:chat_application/src/features/chat/dependency_injection.dart'
+    as Chat;
 
 void initialize() {
   Auth.initializeDependencyInjection();
@@ -15,4 +17,5 @@ void initialize() {
   FriendManagement.initializeDependencyInjection();
   AccountManagement.initializeDependecyInjection();
   Chats.intializeDependencyInjection();
+  Chat.initializeDependencyInjection();
 }
