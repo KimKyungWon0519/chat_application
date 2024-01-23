@@ -1,6 +1,7 @@
 import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
 import 'package:chat_application/src/features/chat/domain/repository/chat_store_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatStoreRepositoryImpl extends ChatStoreRepository {
   @override
@@ -9,6 +10,26 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
         .collection(CloudFirestorePath.chats)
         .doc(chatID)
         .get()
-        .then((value) => value.get(ChatFieldKey.name));
+        .then((value) async {
+      String? name = value.get(ChatFieldKey.name);
+
+      if (name == null || name.isEmpty) {
+        name = await _getFriendName(value.get(ChatFieldKey.uids));
+      }
+
+      return name;
+    });
+  }
+
+  Future<String> _getFriendName(List uids) {
+    uids.remove(FirebaseAuth.instance.currentUser!.uid);
+
+    return FirebaseFirestore.instance
+        .collection(CloudFirestorePath.users)
+        .doc(uids.first)
+        .get()
+        .then(
+          (value) => value.get(UserFieldKey.name),
+        );
   }
 }
