@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'local_widget/chat_field.dart';
 import 'local_widget/chat_listview.dart';
 import 'local_widget/chat_name_text.dart';
 import 'local_widget/user_list_drawer.dart';
@@ -22,6 +23,7 @@ class ChatRoomPage extends StatelessWidget {
             Expanded(
               child: ChatListView(),
             ),
+            ChatField(),
           ],
         ),
       ),
