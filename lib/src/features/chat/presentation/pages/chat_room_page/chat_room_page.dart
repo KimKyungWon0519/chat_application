@@ -1,6 +1,8 @@
-import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/local_widget/chat_name_text.dart';
-import 'package:chat_application/src/features/chat/presentation/pages/chat_room_page/local_widget/user_list_drawer.dart';
 import 'package:flutter/material.dart';
+
+import 'local_widget/chat_listview.dart';
+import 'local_widget/chat_name_text.dart';
+import 'local_widget/user_list_drawer.dart';
 
 class ChatRoomPage extends StatelessWidget {
   final String chatID;
@@ -12,6 +14,16 @@ class ChatRoomPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: ChatNameText(chatID),
+      ),
+      body: const Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Expanded(
+              child: ChatListView(),
+            ),
+          ],
+        ),
       ),
       endDrawer: UserListDrawer(chatID: chatID),
     );
