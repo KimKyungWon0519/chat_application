@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/core/constants/firestore_database_constants.dart';
 import 'package:chat_application/src/features/chat/domain/repository/chat_store_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +7,7 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
   @override
   Future<String> getChatName(String chatID) {
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.chats)
+        .collection(FirestoreDatabasePath.chats)
         .doc(chatID)
         .get()
         .then((value) async {
@@ -24,7 +24,7 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
   @override
   Stream<List<String>> getTalkersSnapshot(String chatID) {
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.chats)
+        .collection(FirestoreDatabasePath.chats)
         .doc(chatID)
         .snapshots()
         .map(
@@ -46,7 +46,7 @@ class ChatStoreRepositoryImpl extends ChatStoreRepository {
     uids.remove(FirebaseAuth.instance.currentUser!.uid);
 
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.users)
+        .collection(FirestoreDatabasePath.users)
         .doc(uids.first)
         .get()
         .then(

@@ -1,5 +1,5 @@
-final class CloudFirestorePath {
-  const CloudFirestorePath._();
+final class FirestoreDatabasePath {
+  const FirestoreDatabasePath._();
 
   static const String users = 'users';
   static const String friends = 'friends';

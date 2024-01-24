@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/core/constants/firestore_database_constants.dart';
 import 'package:chat_application/src/features/friend_management/domain/repository/user_store_repository.dart';
 import 'package:chat_application/src/features/friend_management/domain/model/user_info.dart'
     as Domain;
@@ -12,7 +12,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
     User user = FirebaseAuth.instance.currentUser!;
 
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.users)
+        .collection(FirestoreDatabasePath.users)
         .doc(user.uid)
         .get()
         .then((value) {
@@ -23,7 +23,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   @override
   Future<Domain.UserInfo?> getUserWithCode(String code) {
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.users)
+        .collection(FirestoreDatabasePath.users)
         .where(UserFieldKey.code, isEqualTo: code)
         .get()
         .then((value) {
