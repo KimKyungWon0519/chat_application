@@ -1,8 +1,10 @@
 import 'package:chat_application/src/features/chat/data/data_source/worldtime_client.dart';
 import 'package:chat_application/src/features/chat/data/repository/chat_store_repository_impl.dart';
+import 'package:chat_application/src/features/chat/data/repository/chats_realtime_db_repository_impl.dart';
 import 'package:chat_application/src/features/chat/data/repository/user_store_repository_impl.dart';
 import 'package:chat_application/src/features/chat/data/repository/worldtime_repository_impl.dart';
 import 'package:chat_application/src/features/chat/domain/repository/chat_store_repository.dart';
+import 'package:chat_application/src/features/chat/domain/repository/chats_realtime_db_repository.dart';
 import 'package:chat_application/src/features/chat/domain/repository/user_store_repository.dart';
 import 'package:chat_application/src/features/chat/domain/repository/worldtime_repository.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/chat_store_usecase.dart';
@@ -28,6 +30,9 @@ void initializeDependencyInjection() {
 
   WorldTimeRepository worldTimeRepository =
       WorldTimeRepositoryImpl(worldTimeClient: worldTimeClient);
+
+  ChatsRealTimeDBRepository chatsRealTimeDBRepository =
+      ChatsRealTimeDBRepositoryImpl();
 
   /* End Initialize Repository */
 

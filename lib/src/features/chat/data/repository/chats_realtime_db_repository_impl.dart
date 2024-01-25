@@ -1,4 +1,6 @@
 import 'package:chat_application/src/core/constants/realtime_database_constants.dart';
+import 'package:chat_application/src/features/chat/data/mapper/chat_data_mapper.dart';
+import 'package:chat_application/src/features/chat/domain/model/chat.dart';
 import 'package:chat_application/src/features/chat/domain/repository/chats_realtime_db_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -23,5 +25,13 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
         'time': dateTimePair[1],
       },
     });
+  }
+
+  @override
+  Stream<ChatData> getChats(String chatID) {
+    return FirebaseDatabase.instance
+        .ref('${RealTimeDatabasePath.chats}/$chatID')
+        .onValue
+        .map((event) => (event.snapshot.value as Map).toChatData());
   }
 }
