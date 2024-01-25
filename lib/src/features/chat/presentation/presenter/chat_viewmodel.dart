@@ -37,4 +37,14 @@ class ChatViewModel {
   Future<DateTime> getRealTime() {
     return _getWorldTimeUseCase.getRealTime();
   }
+
+  void senMessage(String chatID, String comment) async {
+    DateTime dateTime = await _getWorldTimeUseCase.getRealTime();
+
+    _setRealTimeChat.sendMessage(
+      chatID,
+      comment: comment,
+      dateTime: dateTime,
+    );
+  }
 }

@@ -55,13 +55,7 @@ class _ChatFieldState extends ConsumerState<ChatField> {
 
   void _onPressed() async {
     try {
-      DateTime dateTime = await ref.read(chatProvider).getRealTime();
-
-      ChatsRealTimeDBRepositoryImpl().sendChat(
-        widget.chatID,
-        comment: _controller.text,
-        dateTime: dateTime,
-      );
+      ref.read(chatProvider).senMessage(widget.chatID, _controller.text);
     } catch (e) {
       return;
     }
