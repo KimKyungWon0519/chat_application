@@ -7,5 +7,5 @@ abstract class ChatsRealTimeDBRepository {
     required DateTime dateTime,
   });
 
-  Stream<ChatData> getChats(String chatID);
+  Stream<List<ChatData>> getChats(String chatID);
 }

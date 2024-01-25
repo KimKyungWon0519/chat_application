@@ -28,10 +28,12 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
   }
 
   @override
-  Stream<ChatData> getChats(String chatID) {
+  Stream<List<ChatData>> getChats(String chatID) {
     return FirebaseDatabase.instance
         .ref('${RealTimeDatabasePath.chats}/$chatID')
         .onValue
-        .map((event) => (event.snapshot.value as Map).toChatData());
+        .map((event) => (event.snapshot.value as List<Map>)
+            .map((e) => e.toChatData())
+            .toList());
   }
 }
