@@ -1,9 +1,13 @@
+import 'package:chat_application/src/features/chat/data/repository/chats_realtime_db_repository_impl.dart';
+import 'package:chat_application/src/features/chat/domain/repository/chats_realtime_db_repository.dart';
 import 'package:chat_application/src/features/chat/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ChatField extends ConsumerStatefulWidget {
-  const ChatField({super.key});
+  final String chatID;
+
+  const ChatField(this.chatID, {super.key});
 
   @override
   ConsumerState<ChatField> createState() => _ChatFieldState();
@@ -17,8 +21,6 @@ class _ChatFieldState extends ConsumerState<ChatField> {
   @override
   void initState() {
     super.initState();
-
-    print(DateTime.parse('2024-01-24T13:18:23.914416'));
 
     _controller = TextEditingController();
   }
@@ -55,7 +57,11 @@ class _ChatFieldState extends ConsumerState<ChatField> {
     try {
       DateTime dateTime = await ref.read(chatProvider).getRealTime();
 
-      print(dateTime);
+      ChatsRealTimeDBRepositoryImpl().sendChat(
+        widget.chatID,
+        comment: _controller.text,
+        dateTime: dateTime,
+      );
     } catch (e) {
       return;
     }

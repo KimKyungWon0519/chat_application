@@ -11,12 +11,16 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
     required DateTime dateTime,
   }) {
     String uid = FirebaseAuth.instance.currentUser!.uid;
+    List<String> dateTimePair = dateTime.toString().split(' ');
 
-    FirebaseDatabase.instance.ref('${RealTimeDatabasePath.chats}/$chatID').set({
+    FirebaseDatabase.instance
+        .ref('${RealTimeDatabasePath.chats}/$chatID')
+        .child(dateTimePair[0])
+        .update({
       '${dateTime.microsecondsSinceEpoch}': {
         'uid': uid,
         'comment': comment,
-        'dateTime': dateTime.toString(),
+        'time': dateTimePair[1],
       },
     });
   }

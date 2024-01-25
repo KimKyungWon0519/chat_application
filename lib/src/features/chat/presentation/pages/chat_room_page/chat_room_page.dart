@@ -16,14 +16,14 @@ class ChatRoomPage extends StatelessWidget {
       appBar: AppBar(
         title: ChatNameText(chatID),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(10),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            Expanded(
+            const Expanded(
               child: ChatListView(),
             ),
-            ChatField(),
+            ChatField(chatID),
           ],
         ),
       ),
