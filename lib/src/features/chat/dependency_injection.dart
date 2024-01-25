@@ -8,6 +8,7 @@ import 'package:chat_application/src/features/chat/domain/repository/chats_realt
 import 'package:chat_application/src/features/chat/domain/repository/user_store_repository.dart';
 import 'package:chat_application/src/features/chat/domain/repository/worldtime_repository.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/chat_store_usecase.dart';
+import 'package:chat_application/src/features/chat/domain/usecase/chats_realtime_db_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/user_store_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/worldtime_usecase.dart';
 import 'package:chat_application/src/features/chat/presentation/presenter/chat_viewmodel.dart';
@@ -50,6 +51,14 @@ void initializeDependencyInjection() {
     worldTimeRepository: worldTimeRepository,
   );
 
+  GetRealTimeChat getRealTimeChat = GetRealTimeChat(
+    chatsRealTimeDBRepository: chatsRealTimeDBRepository,
+  );
+
+  SetRealTimeChat setRealTimeChat = SetRealTimeChat(
+    chatsRealTimeDBRepository: chatsRealTimeDBRepository,
+  );
+
   /* End Initialize UseCase */
 
   /* Start Initialize ViewModel */
@@ -59,6 +68,8 @@ void initializeDependencyInjection() {
       getChatDataUseCase: getChatDataUseCase,
       getUserDataUseCase: getUserDataUseCase,
       getWorldTimeUseCase: getWorldTimeUseCase,
+      getRealTimeChat: getRealTimeChat,
+      setRealTimeChat: setRealTimeChat,
     ),
   );
 
