@@ -10,4 +10,8 @@ class GetUserDataUseCase {
   Stream<String> getuserNameSnapshot(String uid) {
     return _userStoreRepository.getUserNameSnapshot(uid);
   }
+
+  bool isMyUid(String uid) {
+    return _userStoreRepository.isMyUid(uid);
+  }
 }

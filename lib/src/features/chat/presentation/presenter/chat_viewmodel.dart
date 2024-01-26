@@ -52,4 +52,8 @@ class ChatViewModel {
   Stream<List<ChatData>> getChats(String chatID) {
     return _getRealTimeChat.getChats(chatID);
   }
+
+  bool isMyUid(String uid) {
+    return _getUserDataUseCase.isMyUid(uid);
+  }
 }

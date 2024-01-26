@@ -32,7 +32,9 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
     return FirebaseDatabase.instance
         .ref('${RealTimeDatabasePath.chats}/$chatID')
         .onValue
-        .map((event) => (event.snapshot.value as List<Map>)
+        .map((event) => (event.snapshot.value as Map)
+            .entries
+            .toList()
             .map((e) => e.toChatData())
             .toList());
   }
