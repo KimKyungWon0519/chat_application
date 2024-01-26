@@ -22,27 +22,36 @@ class ChatListView extends ConsumerWidget {
         return SingleChildScrollView(
           child: Column(
             children: [
-              for (ChatData data in datas)
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        const Expanded(child: Divider()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(data.date),
-                        ),
-                        const Expanded(child: Divider()),
-                      ],
-                    ),
-                    for (Message message in data.message)
-                      _ChatItem(message: message),
-                  ],
-                ),
+              for (ChatData data in datas) _ChatsWithDateHeader(data),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class _ChatsWithDateHeader extends StatelessWidget {
+  final ChatData data;
+
+  const _ChatsWithDateHeader(this.data, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            const Expanded(child: Divider()),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(data.date),
+            ),
+            const Expanded(child: Divider()),
+          ],
+        ),
+        for (Message message in data.message) _ChatItem(message: message),
+      ],
     );
   }
 }
