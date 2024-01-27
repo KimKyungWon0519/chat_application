@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/core/constants/firestore_database_constants.dart';
 import 'package:chat_application/src/features/chats/data/mapper/chat_info_mapper.dart';
 import 'package:chat_application/src/features/chats/domain/model/chat_info.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart'
@@ -14,7 +14,9 @@ class ChatsStoreRepositoryImpl extends ChatsStoreRepository {
     String myUid = FirebaseAuth.instance.currentUser!.uid;
     List<String> uids = [myUid, ...users.map((e) => e.uid).toList()];
 
-    return FirebaseFirestore.instance.collection(CloudFirestorePath.chats).add({
+    return FirebaseFirestore.instance
+        .collection(FirestoreDatabasePath.chats)
+        .add({
       ChatFieldKey.uids: uids,
       ChatFieldKey.name: name,
     }).then((value) => value.id);
@@ -26,7 +28,7 @@ class ChatsStoreRepositoryImpl extends ChatsStoreRepository {
     List<String> uids = [myUid, ...users.map((e) => e.uid).toList()];
 
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.chats)
+        .collection(FirestoreDatabasePath.chats)
         .where(ChatFieldKey.uids, arrayContains: myUid)
         .get()
         .then((value) {
@@ -51,7 +53,7 @@ class ChatsStoreRepositoryImpl extends ChatsStoreRepository {
     String uid = FirebaseAuth.instance.currentUser!.uid;
 
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.chats)
+        .collection(FirestoreDatabasePath.chats)
         .where(ChatFieldKey.uids, arrayContains: uid)
         .snapshots()
         .map((event) {

@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/core/constants/firestore_database_constants.dart';
 import 'package:chat_application/src/features/friends/data/mapper/user_info_mapper.dart';
 import 'package:chat_application/src/features/friends/domain/model/user_info.dart'
     as Domain;
@@ -17,7 +17,7 @@ class UsersStoreRepositoryImpl extends UsersStoreRepository {
   @override
   Stream<Domain.UserInfo> getUserInfoSnapshot(String uid) {
     return FirebaseFirestore.instance
-        .collection(CloudFirestorePath.users)
+        .collection(FirestoreDatabasePath.users)
         .doc(uid)
         .snapshots()
         .map((event) => event.data()!.toUserInfo(uid));

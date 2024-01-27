@@ -1,4 +1,4 @@
-import 'package:chat_application/src/core/constants/cloud_firestore_path.dart';
+import 'package:chat_application/src/core/constants/firestore_database_constants.dart';
 import 'package:chat_application/src/features/chats/domain/model/user_info.dart';
 
 extension MapExtension on Map {
