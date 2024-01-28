@@ -3,6 +3,7 @@ import 'package:chat_application/src/features/chat/domain/usecase/chat_store_use
 import 'package:chat_application/src/features/chat/domain/usecase/chats_realtime_db_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/user_store_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/worldtime_usecase.dart';
+import 'package:flutter/material.dart';
 
 class ChatViewModel {
   final GetChatDataUseCase _getChatDataUseCase;

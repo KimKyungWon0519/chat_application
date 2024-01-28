@@ -4,7 +4,7 @@ import 'package:chat_application/src/features/chat/presentation/presenter/provid
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatListView extends ConsumerWidget {
+class ChatListView extends ConsumerStatefulWidget {
   final String chatID;
 
   const ChatListView({
@@ -13,21 +13,65 @@ class ChatListView extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return StreamBuilder(
-      stream: ref.read(chatProvider).getChats(chatID),
-      builder: (context, snapshot) {
-        List<ChatData> datas = snapshot.data ?? [];
+  ConsumerState<ChatListView> createState() => _ChatListViewState();
+}
 
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              for (ChatData data in datas) _ChatsWithDateHeader(data),
-            ],
-          ),
+class _ChatListViewState extends ConsumerState<ChatListView> {
+  late final ScrollController _scrollController;
+
+  bool isEnd = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      isEnd = _scrollController.offset ==
+          _scrollController.position.maxScrollExtent;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (isEnd) {
+          _initializeScrollPosition();
+        }
+
+        return StreamBuilder(
+          stream: ref.read(chatProvider).getChats(widget.chatID),
+          builder: (context, snapshot) {
+            List<ChatData> datas = snapshot.data ?? [];
+
+            if (isEnd && datas.isNotEmpty) {
+              _initializeScrollPosition();
+            }
+
+            return SingleChildScrollView(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.viewInsetsOf(context).bottom,
+              ),
+              child: Column(
+                children: [
+                  for (ChatData data in datas) _ChatsWithDateHeader(data),
+                ],
+              ),
+            );
+          },
         );
       },
     );
+  }
+
+  void _initializeScrollPosition() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      isEnd = true;
+    });
   }
 }
 
