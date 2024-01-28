@@ -4,7 +4,7 @@ import 'package:chat_application/src/features/chat/presentation/presenter/provid
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatListView extends ConsumerWidget {
+class ChatListView extends ConsumerStatefulWidget {
   final String chatID;
 
   const ChatListView({
@@ -13,18 +13,39 @@ class ChatListView extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ChatListView> createState() => _ChatListViewState();
+}
+
+class _ChatListViewState extends ConsumerState<ChatListView> {
+  late final ScrollController _scrollController;
+
+  bool isEnd = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      isEnd = _scrollController.offset ==
+          _scrollController.position.maxScrollExtent;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: ref.read(chatProvider).getChats(chatID),
+      stream: ref.read(chatProvider).getChats(widget.chatID),
       builder: (context, snapshot) {
         List<ChatData> datas = snapshot.data ?? [];
 
-        if (datas.isNotEmpty) {
+        if (isEnd && datas.isNotEmpty) {
           _initializeScrollPosition(ref);
         }
 
         return SingleChildScrollView(
-          controller: ref.read(chatProvider).scrollController,
+          controller: _scrollController,
           child: Column(
             children: [
               for (ChatData data in datas) _ChatsWithDateHeader(data),
@@ -37,10 +58,8 @@ class ChatListView extends ConsumerWidget {
 
   void _initializeScrollPosition(WidgetRef ref) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ScrollController scrollController =
-          ref.read(chatProvider).scrollController;
-
-      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      isEnd = true;
     });
   }
 }
