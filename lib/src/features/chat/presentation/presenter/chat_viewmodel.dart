@@ -11,9 +11,6 @@ class ChatViewModel {
   final GetWorldTimeUseCase _getWorldTimeUseCase;
   final GetRealTimeChat _getRealTimeChat;
   final SetRealTimeChat _setRealTimeChat;
-  final ScrollController scrollController;
-
-  final bool _initializeChatList = false;
 
   ChatViewModel({
     required GetChatDataUseCase getChatDataUseCase,
@@ -25,8 +22,7 @@ class ChatViewModel {
         _getUserDataUseCase = getUserDataUseCase,
         _getWorldTimeUseCase = getWorldTimeUseCase,
         _getRealTimeChat = getRealTimeChat,
-        _setRealTimeChat = setRealTimeChat,
-        scrollController = ScrollController();
+        _setRealTimeChat = setRealTimeChat;
 
   Future<String> getChatName(String chatID) {
     return _getChatDataUseCase.getChatName(chatID);

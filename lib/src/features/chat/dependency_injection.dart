@@ -63,22 +63,14 @@ void initializeDependencyInjection() {
 
   /* Start Initialize ViewModel */
 
-  chatProvider = Provider.autoDispose(
-    (ref) {
-      ChatViewModel chatViewModel = ChatViewModel(
-        getChatDataUseCase: getChatDataUseCase,
-        getUserDataUseCase: getUserDataUseCase,
-        getWorldTimeUseCase: getWorldTimeUseCase,
-        getRealTimeChat: getRealTimeChat,
-        setRealTimeChat: setRealTimeChat,
-      );
-
-      ref.onDispose(() {
-        chatViewModel.scrollController.dispose();
-      });
-
-      return chatViewModel;
-    },
+  chatProvider = Provider(
+    (ref) => ChatViewModel(
+      getChatDataUseCase: getChatDataUseCase,
+      getUserDataUseCase: getUserDataUseCase,
+      getWorldTimeUseCase: getWorldTimeUseCase,
+      getRealTimeChat: getRealTimeChat,
+      setRealTimeChat: setRealTimeChat,
+    ),
   );
 
   /* End Initialize ViewModel */
