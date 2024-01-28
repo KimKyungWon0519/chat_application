@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "13574928418",
+    "firebase_url": "https://chat-project-45082-default-rtdb.firebaseio.com",
+    "project_id": "chat-project-45082",
+    "storage_bucket": "chat-project-45082.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13574928418:android:caa80f93deeb8ae933b27b",
+        "android_client_info": {
+          "package_name": "app.kkw.chat_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDuBZNynrAa4FtZGHGG1tJU09dezhtYy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
