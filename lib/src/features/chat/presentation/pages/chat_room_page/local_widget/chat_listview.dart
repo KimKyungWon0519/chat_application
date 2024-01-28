@@ -35,28 +35,39 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: ref.read(chatProvider).getChats(widget.chatID),
-      builder: (context, snapshot) {
-        List<ChatData> datas = snapshot.data ?? [];
-
-        if (isEnd && datas.isNotEmpty) {
-          _initializeScrollPosition(ref);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (isEnd) {
+          _initializeScrollPosition();
         }
 
-        return SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            children: [
-              for (ChatData data in datas) _ChatsWithDateHeader(data),
-            ],
-          ),
+        return StreamBuilder(
+          stream: ref.read(chatProvider).getChats(widget.chatID),
+          builder: (context, snapshot) {
+            List<ChatData> datas = snapshot.data ?? [];
+
+            if (isEnd && datas.isNotEmpty) {
+              _initializeScrollPosition();
+            }
+
+            return SingleChildScrollView(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.viewInsetsOf(context).bottom,
+              ),
+              child: Column(
+                children: [
+                  for (ChatData data in datas) _ChatsWithDateHeader(data),
+                ],
+              ),
+            );
+          },
         );
       },
     );
   }
 
-  void _initializeScrollPosition(WidgetRef ref) {
+  void _initializeScrollPosition() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
       isEnd = true;
