@@ -7,9 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ChatListView extends ConsumerWidget {
   final String chatID;
 
-  bool _initializeScroll = false;
-
-  ChatListView({
+  const ChatListView({
     super.key,
     required this.chatID,
   });
@@ -21,7 +19,7 @@ class ChatListView extends ConsumerWidget {
       builder: (context, snapshot) {
         List<ChatData> datas = snapshot.data ?? [];
 
-        if (!_initializeScroll && datas.isNotEmpty) {
+        if (datas.isNotEmpty) {
           _initializeScrollPosition(ref);
         }
 
@@ -38,10 +36,6 @@ class ChatListView extends ConsumerWidget {
   }
 
   void _initializeScrollPosition(WidgetRef ref) {
-    if (_initializeScroll) return;
-
-    _initializeScroll = true;
-
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ScrollController scrollController =
           ref.read(chatProvider).scrollController;

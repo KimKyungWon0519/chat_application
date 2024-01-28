@@ -36,6 +36,7 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
             .entries
             .toList()
             .map((e) => e.toChatData())
-            .toList());
+            .toList()
+          ..sort((a, b) => a.date.compareTo(b.date)));
   }
 }
