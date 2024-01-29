@@ -59,6 +59,7 @@ class _ChatFieldState extends ConsumerState<ChatField> {
     try {
       ref.read(chatProvider).senMessage(widget.chatID, _controller.text);
       _controller.clear();
+      _isCanSend = false;
     } catch (e) {
       return;
     }
