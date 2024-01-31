@@ -153,13 +153,16 @@ class _ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              message.commnet,
-              style: Theme.of(context).textTheme.titleMedium,
+        Flexible(
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                message.commnet,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
           ),
         ),
