@@ -57,7 +57,7 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
               ),
               child: Column(
                 children: [
-                  for (ChatData data in datas) _ChatsWithDateHeader(data),
+                  for (ChatData data in datas) _MesssageWithDate(data),
                 ],
               ),
             );
@@ -75,35 +75,46 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
   }
 }
 
-class _ChatsWithDateHeader extends StatelessWidget {
+class _MesssageWithDate extends StatelessWidget {
   final ChatData data;
 
-  const _ChatsWithDateHeader(this.data, {super.key});
+  const _MesssageWithDate(this.data, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            const Expanded(child: Divider()),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(data.date),
-            ),
-            const Expanded(child: Divider()),
-          ],
-        ),
-        for (Message message in data.message) _ChatItem(message: message),
+        _Date(data.date),
+        for (Message message in data.message) _Message(message: message),
       ],
     );
   }
 }
 
-class _ChatItem extends ConsumerWidget {
+class _Date extends StatelessWidget {
+  final String date;
+
+  const _Date(this.date, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Expanded(child: Divider()),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(date),
+        ),
+        const Expanded(child: Divider()),
+      ],
+    );
+  }
+}
+
+class _Message extends ConsumerWidget {
   final Message message;
 
-  const _ChatItem({
+  const _Message({
     super.key,
     required this.message,
   });
@@ -153,13 +164,16 @@ class _ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              message.commnet,
-              style: Theme.of(context).textTheme.titleMedium,
+        Flexible(
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                message.commnet,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
           ),
         ),

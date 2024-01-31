@@ -54,11 +54,10 @@ class _ChatFieldState extends ConsumerState<ChatField> {
   }
 
   void _onPressed() async {
-    FocusScope.of(context).unfocus();
-
     try {
       ref.read(chatProvider).senMessage(widget.chatID, _controller.text);
       _controller.clear();
+      _isCanSend = false;
     } catch (e) {
       return;
     }
