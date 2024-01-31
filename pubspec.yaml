@@ -44,6 +44,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   dio: ^5.4.0
   firebase_database: ^10.4.0
+  package_info_plus: ^5.0.1
 
 dev_dependencies:
   flutter_test:
