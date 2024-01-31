@@ -18,7 +18,7 @@ void main() async {
   FirebaseFirestore.instanceFor(app: app);
   FirebaseDatabase.instanceFor(app: app);
 
-  Di.initialize();
+  await Di.initialize();
 
   usePathUrlStrategy();
 
