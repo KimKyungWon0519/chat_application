@@ -3,13 +3,17 @@
 
 name: Build and Upload, Deploy on merge master branch
 'on':
-  push:
-    branches:
-      - master
+  release:
+    types:
+      - created
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Release Infomation
+        run:
+          echo "Release Version - ${{ github.event.release.tag_name }}"
+
       - uses: actions/checkout@v4
 
       - name: Setup Flutter
