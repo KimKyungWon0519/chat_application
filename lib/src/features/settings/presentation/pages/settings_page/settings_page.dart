@@ -18,7 +18,7 @@ class SettingsPage extends StatelessWidget {
           const Divider(),
           const FriendManagementTile(),
           const Spacer(),
-          Text('${packageInfo.version}+${packageInfo.buildNumber}'),
+          Text(packageInfo.version),
           const SizedBox(height: 5),
         ],
       ),
