@@ -1,10 +1,10 @@
-import 'dart:math';
-
 import 'package:chat_application/src/features/chat/domain/model/chat.dart';
 import 'package:chat_application/src/features/chat/domain/model/message.dart';
 import 'package:chat_application/src/features/chat/presentation/presenter/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'message_options.dart';
 
 class ChatListView extends ConsumerStatefulWidget {
   final String chatID;
@@ -172,7 +172,7 @@ class _ChatBubble extends StatelessWidget {
           child: GestureDetector(
             onLongPressDown: isMine
                 ? (details) =>
-                    _showChatOptionMeun(details.globalPosition, context)
+                    showMessageOptionMenu(details.globalPosition, context)
                 : null,
             child: Card(
               child: Padding(
@@ -193,25 +193,5 @@ class _ChatBubble extends StatelessWidget {
           ),
         ),
     );
-  }
-
-  void _showChatOptionMeun(Offset touchOffset, BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
-    double left = _distance(touchOffset.dx, 0),
-        right = _distance(touchOffset.dx, size.width);
-
-    showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(left, touchOffset.dy, right, 0),
-      items: [
-        const PopupMenuItem(
-          child: Text(''),
-        ),
-      ],
-    );
-  }
-
-  double _distance(double pos1, double pos2) {
-    return sqrt(pow(pos1, 2) - pow(pos2, 2));
   }
 }
