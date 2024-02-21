@@ -3,20 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserListDrawer extends StatelessWidget {
-  final String chatID;
-
-  const UserListDrawer({
-    super.key,
-    required this.chatID,
-  });
+  const UserListDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return const Drawer(
       child: Column(
         children: [
-          const _TalkersListTitle(),
-          _TalkerListView(chatID),
+          _TalkersListTitle(),
+          _TalkerListView(),
         ],
       ),
     );
@@ -44,12 +39,12 @@ class _TalkersListTitle extends StatelessWidget {
 }
 
 class _TalkerListView extends ConsumerWidget {
-  final String chatID;
-
-  const _TalkerListView(this.chatID, {super.key});
+  const _TalkerListView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String chatID = ref.read(chatProvider).chatID;
+
     return StreamBuilder(
       stream: ref.read(chatProvider).getTalkerUIDSnapshot(chatID),
       builder: (context, snapshot) {
