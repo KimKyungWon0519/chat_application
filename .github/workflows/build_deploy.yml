@@ -1,4 +1,4 @@
-name: Build and Upload, Deploy on merge master branch
+name: Build and Upload, Deloy on Create new release tag
 on:
   push:
     tags:
