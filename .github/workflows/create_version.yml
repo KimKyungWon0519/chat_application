@@ -1,0 +1,27 @@
+permissions: write-all
+
+name: Create Tag and Release Note
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Latest Version
+      run: echo "version=$(echo '${{ github.event.head_commit.message }}' | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')" >> $GITHUB_OUTPUT
+      id: extract_version_name    
+
+    - name:
+      run: git tag ${{ steps.extract_version_name.outputs.version }} && git push -u origin ${{ steps.extract_version_name.outputs.version }} 
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with: 
+        tag_name: ${{ steps.extract_version_name.outputs.version }} 
+        release_name: ${{ steps.extract_version_name.outputs.version }} 
+        draft: true
