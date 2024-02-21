@@ -9,7 +9,12 @@ extension MapEntryExtenstion on MapEntry {
     );
 
     return ChatData(
-        date: key as String,
-        message: messages.map((e) => (e.value as Map).toMessage()).toList());
+      date: key as String,
+      message: messages
+          .map((e) => (e.value as Map).toMessage(
+              DateTime.fromMicrosecondsSinceEpoch(int.parse(e.key as String))
+                  .toString()))
+          .toList(),
+    );
   }
 }
