@@ -1,7 +1,8 @@
 name: Build and Upload, Deploy on merge master branch
 on:
   release:
-    types: [ 'created' ]
+    types:
+      - created
     
 jobs:
   build_and_deploy:
