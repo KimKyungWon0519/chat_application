@@ -1,8 +1,10 @@
 name: Build and Upload, Deloy on Create new release tag
 on:
-  create:
-    tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_run:
+    workflows: 
+      - Create Tag and Release Note
+    types:
+      - completed
       
 jobs:
   build_and_deploy:
