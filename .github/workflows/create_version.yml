@@ -1,3 +1,5 @@
+permissions: write-all
+
 name: Create Tag and Release Note
 on:
   push:
