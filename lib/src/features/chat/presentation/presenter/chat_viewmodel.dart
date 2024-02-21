@@ -1,9 +1,9 @@
 import 'package:chat_application/src/features/chat/domain/model/chat.dart';
+import 'package:chat_application/src/features/chat/domain/model/message.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/chat_store_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/chats_realtime_db_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/user_store_usecase.dart';
 import 'package:chat_application/src/features/chat/domain/usecase/worldtime_usecase.dart';
-import 'package:flutter/material.dart';
 
 class ChatViewModel {
   final GetChatDataUseCase _getChatDataUseCase;
@@ -11,6 +11,8 @@ class ChatViewModel {
   final GetWorldTimeUseCase _getWorldTimeUseCase;
   final GetRealTimeChat _getRealTimeChat;
   final SetRealTimeChat _setRealTimeChat;
+
+  String chatID = '';
 
   ChatViewModel({
     required GetChatDataUseCase getChatDataUseCase,
@@ -56,5 +58,9 @@ class ChatViewModel {
 
   bool isMyUid(String uid) {
     return _getUserDataUseCase.isMyUid(uid);
+  }
+
+  void deleteMessage(Message message) {
+    _setRealTimeChat.deleteMessage(chatID, message);
   }
 }

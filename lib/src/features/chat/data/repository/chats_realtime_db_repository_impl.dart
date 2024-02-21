@@ -1,6 +1,8 @@
 import 'package:chat_application/src/core/constants/realtime_database_constants.dart';
 import 'package:chat_application/src/features/chat/data/mapper/chat_data_mapper.dart';
+import 'package:chat_application/src/features/chat/data/mapper/message_mapper.dart';
 import 'package:chat_application/src/features/chat/domain/model/chat.dart';
+import 'package:chat_application/src/features/chat/domain/model/message.dart';
 import 'package:chat_application/src/features/chat/domain/repository/chats_realtime_db_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -22,7 +24,6 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
       '${dateTime.microsecondsSinceEpoch}': {
         'uid': uid,
         'comment': comment,
-        'time': dateTimePair[1],
       },
     });
   }
@@ -38,5 +39,16 @@ class ChatsRealTimeDBRepositoryImpl implements ChatsRealTimeDBRepository {
             .map((e) => e.toChatData())
             .toList()
           ..sort((a, b) => a.date.compareTo(b.date)));
+  }
+
+  @override
+  void deleteChat(String chatID, Message message) {
+    int unixTime = DateTime.parse(message.dateTime).microsecondsSinceEpoch;
+
+    FirebaseDatabase.instance
+        .ref('${RealTimeDatabasePath.chats}/$chatID/${message.date}')
+        .update({
+      '$unixTime': message.copyWith(comment: null).toJson(),
+    });
   }
 }

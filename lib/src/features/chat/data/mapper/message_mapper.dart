@@ -1,11 +1,20 @@
 import 'package:chat_application/src/features/chat/domain/model/message.dart';
 
 extension MapExtension on Map {
-  Message toMessage() {
+  Message toMessage(String dateTime) {
     return Message(
       uid: this['uid'],
-      commnet: this['comment'],
-      time: this['time'],
+      comment: this['comment'],
+      dateTime: dateTime,
     );
+  }
+}
+
+extension MessageExtension on Message {
+  Map<String, dynamic> toJson() {
+    return {
+      'uid': uid,
+      'comment': comment,
+    };
   }
 }
