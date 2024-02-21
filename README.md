@@ -120,7 +120,16 @@ $ flutter pub get
     <p width="45%" style="margin-right: 2%;" align="left">
         다른 채팅 앱과 마찬가지로 채팅한 날짜와 메시지가 표시됩니다. 이 기능을 통해 사용자는 손쉽게 대화를 진행하고 이전 메시지를 찾아볼 수 있습니다.
     </p>
-    <img src="./.github/readme/채팅룸.png" width="45%" style="margin-right: 2%; margin-left: 2%">
+    <img src="./.github/readme/채팅룸.png" width="45%" style="margin-right: 2%; margin-left: 2%; margin-bottom: 5%">
+</div>
+
+메시지를 오랫동안 클릭할 경우 메시지 옵션이 표시됩니다.
+- 메시지 옵션
+  - 삭제 : 메시지를 삭제합니다.
+
+<div align="center">
+    <img src="./.github/readme/메시지 옵션.png" width="45%" style="margin-right: 2%; margin-left: 2%">
+    <img src="./.github/readme/삭제된메시지.png" width="45%" style="margin-right: 2%; margin-left: 2%">
 </div>
 
 ### 계정 설정
