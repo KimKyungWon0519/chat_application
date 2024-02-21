@@ -4,7 +4,7 @@ name: Create Tag and Release Note
 on:
   push:
     branches:
-      - test_github_action_branch
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
