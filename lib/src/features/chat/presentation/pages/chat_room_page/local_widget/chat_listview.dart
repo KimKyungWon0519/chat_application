@@ -4,13 +4,10 @@ import 'package:chat_application/src/features/chat/presentation/presenter/provid
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatListView extends ConsumerStatefulWidget {
-  final String chatID;
+import 'message_options.dart';
 
-  const ChatListView({
-    super.key,
-    required this.chatID,
-  });
+class ChatListView extends ConsumerStatefulWidget {
+  const ChatListView({super.key});
 
   @override
   ConsumerState<ChatListView> createState() => _ChatListViewState();
@@ -35,6 +32,8 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
 
   @override
   Widget build(BuildContext context) {
+    String chatID = ref.read(chatProvider).chatID;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         if (isEnd) {
@@ -42,7 +41,7 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
         }
 
         return StreamBuilder(
-          stream: ref.read(chatProvider).getChats(widget.chatID),
+          stream: ref.read(chatProvider).getChats(chatID),
           builder: (context, snapshot) {
             List<ChatData> datas = snapshot.data ?? [];
 
@@ -167,14 +166,32 @@ class _ChatBubble extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Flexible(
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                message.commnet,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
+          child: Consumer(
+            builder: (context, ref, child) {
+              print('_ChatBubble : ${ref.read(chatProvider).hashCode}');
+
+              return GestureDetector(
+                onLongPressDown: isMine && message.comment != null
+                    ? (details) => showMessageOptionMenu(
+                          message,
+                          touchOffset: details.globalPosition,
+                          context: context,
+                          viewModel: ref.read(chatProvider),
+                        )
+                    : null,
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      message.comment ?? '삭제된 메시지 입니다.',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: message.comment == null ? Colors.grey : null,
+                          ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ]..insert(
