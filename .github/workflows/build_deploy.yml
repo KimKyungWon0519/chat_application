@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Release Infomation
         run:
-          echo "Release Version - ${{ env.GITHUB_REF##*/ }}"
+          echo "Release Version - ${{ github.ref_name }}"
 
       - uses: actions/checkout@v4
 
