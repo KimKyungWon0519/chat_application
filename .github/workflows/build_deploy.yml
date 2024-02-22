@@ -1,6 +1,6 @@
 name: Build and Upload, Deloy on Create new release tag
 on:
-  create:
+  push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Release Infomation
         run:
-          echo "Release Version - ${{ github.event.release.tag_name }}"
+          echo "Release Version - ${{ env.GITHUB_REF##*/ }}"
 
       - uses: actions/checkout@v4
 
