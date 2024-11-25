@@ -1,16 +1,1 @@
-{
-  "hosting": {
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
-}
+{"hosting":{"public":"build/web","ignore":["firebase.json","**/.*","**/node_modules/**"],"rewrites":[{"source":"**","destination":"/index.html"}]},"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"chat-project-1b800","configurations":{"android":"1:933179498036:android:e20d933697253b14017461","web":"1:933179498036:web:5598bf4f2d3a01e8017461"}}},"android":{"default":{"projectId":"chat-project-1b800","appId":"1:933179498036:android:e20d933697253b14017461","fileOutput":"android/app/google-services.json"}}}}}
