@@ -50,22 +50,23 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCm8Pw-qr372PqdVEXwixA74pd7pY8XSQc',
-    appId: '1:13574928418:web:d00e8f1e89e7c58333b27b',
-    messagingSenderId: '13574928418',
-    projectId: 'chat-project-45082',
-    authDomain: 'chat-project-45082.firebaseapp.com',
-    databaseURL: 'https://chat-project-45082-default-rtdb.firebaseio.com',
-    storageBucket: 'chat-project-45082.appspot.com',
-    measurementId: 'G-V1WVFNWET3',
+    apiKey: 'AIzaSyArxoixC83HN9Xmdb6FGLbEwo8uO_fReic',
+    appId: '1:933179498036:web:5598bf4f2d3a01e8017461',
+    messagingSenderId: '933179498036',
+    projectId: 'chat-project-1b800',
+    authDomain: 'chat-project-1b800.firebaseapp.com',
+    databaseURL: 'https://chat-project-1b800-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'chat-project-1b800.firebasestorage.app',
+    measurementId: 'G-BD8QBVYSR1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBDuBZNynrAa4FtZGHGG1tJU09dezhtYy0',
-    appId: '1:13574928418:android:caa80f93deeb8ae933b27b',
-    messagingSenderId: '13574928418',
-    projectId: 'chat-project-45082',
-    databaseURL: 'https://chat-project-45082-default-rtdb.firebaseio.com',
-    storageBucket: 'chat-project-45082.appspot.com',
+    apiKey: 'AIzaSyBF73AKRfpSTX-oXzB0RLNY9HRDLJltRD8',
+    appId: '1:933179498036:android:e20d933697253b14017461',
+    messagingSenderId: '933179498036',
+    projectId: 'chat-project-1b800',
+    databaseURL: 'https://chat-project-1b800-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'chat-project-1b800.firebasestorage.app',
   );
+
 }
